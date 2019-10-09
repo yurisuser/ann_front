@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>LOGO</span>
+        <span class="spacer"></span>
+        <span class="link">Новости</span>
+        <span class="link">Работы</span>
+        <span class="link">Контакты</span>
+        <span class="link">Галерея</span>
+        <div>
+            <div *ngIf="authState$ | async as authState; else login" (click)="logout()">
+                {{authState}}(logout)
+            </div>
+            <ng-template #login>
+                <mat-icon class="icon link" aria-hidden="false">person</mat-icon>
+            </ng-template>
+
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
