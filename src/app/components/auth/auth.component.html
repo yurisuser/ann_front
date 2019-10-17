@@ -1,13 +1,14 @@
 <div class="container">
-    <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)">
-        <div>
-            <label>login</label>
-            <input id="name" type="text" formControlName="name" required minlength="3">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <input matInput placeholder="login" formControlName="name" placeholder="name" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="password" formControlName="password" placeholder="password" required>
+        </mat-form-field>
+        <button mat-stroked-button color="primary" class="button" type="submit" [disabled]="isDisabledButton">Login</button>
+        <div *ngIf="errMessage" class="wrong">
+            {{errMessage}}
         </div>
-        <div>
-            <label>password</label>
-            <input id="password" type="password" formControlName="password" required>
-        </div>
-        <button class="button" type="submit">Login</button>
     </form>
 </div>

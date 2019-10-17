@@ -1,0 +1,15 @@
+.content {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    height: 50px;
+    background-color: rgb(5, 36, 139);
+    color: white;
+}
+
+.data {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    width: 100%;
+}

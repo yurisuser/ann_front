@@ -7,6 +7,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import * as env from '../../environments/environment';
 import { LoginResponse } from '../models/loginResponse';
 import { LoginUser } from '../models/loginUser';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -24,6 +25,7 @@ export class AuthService {
 
     constructor(
         private http: HttpClient,
+        private router: Router,
     ) {
         this.jwtDecoder = new JwtHelperService();
         this.authState$ = new BehaviorSubject(null);
@@ -31,6 +33,8 @@ export class AuthService {
      }
 
     sendLoginPassword(data): Observable<LoginResponse> {
+        console.log(data);
+
         return this.http.post<LoginResponse>(`${env.backEnd.address}/auth/login`, data, this.options)
             .pipe(
                 map(
@@ -38,6 +42,7 @@ export class AuthService {
                         this.setTokens(x.access_token, x.refresh_token);
                         const user = this.getUserFromToken(this.getAccesToken());
                         this.authState$.next(user);
+                        this.router.navigate(['']);
                         return x;
                     }
                 )
@@ -65,7 +70,7 @@ export class AuthService {
     }
 
     private getUserFromToken(token: string): LoginUser {
-        return this.jwtDecoder.decodeToken(token).name;
+        return this.jwtDecoder.decodeToken(token);
     }
 
     checkAuth() {

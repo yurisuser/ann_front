@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -10,24 +10,40 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AuthComponent implements OnInit {
     private loginForm;
+    public isDisabledButton = false;
+    public errMessage = '';
 
     constructor(
         private authSrv: AuthService,
         private formBuilder: FormBuilder,
     ) {
         this.loginForm = this.formBuilder.group({
-            name: 'user3',
-            password: 'user3'
+            name: ['user3', Validators.required],
+            password: ['user3', Validators.required],
         });
     }
 
     ngOnInit() {
     }
 
-    submit(data) {
-        this.authSrv.sendLoginPassword(data).subscribe(
-            x => console.log(x)
-        );
+    onSubmit() {
+        if (this.loginForm.valid) {
+            this.isDisabledButton = true;
+            this.errMessage = '';
+            this.authSrv.sendLoginPassword(this.loginForm.value)
+              .subscribe(() => {
+                this.isDisabledButton = false;
+                },
+                err => {
+                  if (err.status === 401 || err.status === 404) {
+                    this.errMessage = 'Wrong login or password';
+                  } else {
+                    this.errMessage = 'Unknown error';
+                  }
+                  this.isDisabledButton = false;
+                }
+              );
+          }
     }
 
 }

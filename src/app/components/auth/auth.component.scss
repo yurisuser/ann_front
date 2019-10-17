@@ -3,14 +3,13 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-    border: 1px solid red;
 }
 
 form {
     display: flex;
     flex-direction: column;
     padding: 1em;
-    div {
+    mat-form-field {
         display: flex;
         flex-direction: column;
         margin: .3em 0;
@@ -19,4 +18,9 @@ form {
 
 label {
     font-size: .8em;
+}
+
+.wrong {
+    color: red;
+    text-align: center;
 }
