@@ -7,7 +7,7 @@
         <span class="link">Контакты</span>
         <span class="link">Галерея</span>
         <span class="link" *ngIf="(authState$ | async)?.role == 'admin'">
-            <mat-icon class="icon" aria-hidden="false">build</mat-icon>
+            <mat-icon class="icon" routerLink="admin" aria-hidden="false">build</mat-icon>
         </span>
         <div>
             <div *ngIf="authState$ | async as authState; else login" (click)="logout()" class="logout">

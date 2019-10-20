@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="content">
+        <div class="adduser">add user</div>
+        <table *ngIf="users">
+                <thead>
+                    <tr>
+                        <td>id</td>
+                        <td>name</td>
+                        <td>role</td>
+                        <td>mark</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users" class="user" (click)="onUser(user)">
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.role.role }}</td>
+                        <td>::</td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+</div>
