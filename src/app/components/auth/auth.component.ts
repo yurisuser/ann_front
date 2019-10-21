@@ -18,8 +18,8 @@ export class AuthComponent implements OnInit {
         private formBuilder: FormBuilder,
     ) {
         this.loginForm = this.formBuilder.group({
-            name: ['user3', Validators.required],
-            password: ['user3', Validators.required],
+            name: ['', Validators.required],
+            password: ['', Validators.required],
         });
     }
 

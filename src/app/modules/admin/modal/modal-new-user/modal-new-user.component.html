@@ -1,0 +1,23 @@
+<h2  mat-dialog-title> Create new user </h2>
+<form class="container" [formGroup]="newUser" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <input matInput placeholder="Name" value="" formControlName="name">
+        <div *ngIf=" newUser.get('name').invalid  && (newUser.get('name').dirty || newUser.get('name').touched)">
+            <mat-error *ngIf="newUser.get('name').errors.isExist">*Already exist username</mat-error>
+            <mat-error *ngIf="newUser.get('name').errors.required">*Required field</mat-error>
+            <mat-error *ngIf="newUser.get('name').errors.minlength">*MinLength name: {{minLength}}</mat-error>
+        </div>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+            <mat-option *ngFor="let role of data.roles" [value]="role.id">
+                {{role.role}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div>
+        <button mat-stroked-button color="primary" type="submit" [disabled]="!newUser.valid">Accept</button>
+        <button mat-stroked-button color="primary" (click)="onClose()">Close</button>
+    </div>
+</form>
