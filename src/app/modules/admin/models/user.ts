@@ -2,6 +2,6 @@ import { IRole } from './role';
 
 export interface IUser {
     id: number;
-    name: string;
+    login: string;
     role: IRole;
 }

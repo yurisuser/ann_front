@@ -5,7 +5,7 @@
                 <thead>
                     <tr>
                         <td>id</td>
-                        <td>name</td>
+                        <td>login</td>
                         <td>role</td>
                         <td>mark</td>
                     </tr>
@@ -13,7 +13,7 @@
                 <tbody>
                     <tr *ngFor="let user of users" class="user" (click)="onUser(user)">
                         <td>{{ user.id }}</td>
-                        <td>{{ user.name }}</td>
+                        <td>{{ user.login }}</td>
                         <td>{{ user.role.role }}</td>
                         <td>::</td>
                     </tr>

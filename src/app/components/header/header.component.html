@@ -11,7 +11,7 @@
         </span>
         <div>
             <div *ngIf="authState$ | async as authState; else login" (click)="logout()" class="logout">
-                <div class="name">{{authState.name}}</div>
+                <div class="name">{{authState.login}}</div>
                 <div class="comment">(logout)</div>
             </div>
             <ng-template #login>

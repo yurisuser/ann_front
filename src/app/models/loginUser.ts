@@ -1,4 +1,4 @@
 export interface LoginUser {
-    name: string;
+    login: string;
     role: string;
 }

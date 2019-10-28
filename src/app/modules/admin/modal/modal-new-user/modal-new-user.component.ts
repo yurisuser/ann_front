@@ -17,7 +17,7 @@ export class ModalNewUserComponent implements OnInit {
     name: new FormControl('', [
       Validators.required,
       Validators.minLength(this.minLength),
-      ExistUserValidator(this.data.users.map(x => x.name)),
+      ExistUserValidator(this.data.users.map(x => x.login)),
     ]),
     role: new FormControl('', [
       Validators.required,
