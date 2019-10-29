@@ -3,18 +3,28 @@
         <div class="adduser" (click)="onCreateUser()">add user</div>
         <table *ngIf="users">
                 <thead>
-                    <tr>
+                    <tr class="ws">
                         <td>id</td>
                         <td>login</td>
                         <td>role</td>
+                        <td>first name</td>
+                        <td>email</td>
+                        <td>patronymic</td>
+                        <td>last name</td>
+                        <td>registration</td>
                         <td>mark</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of users" class="user" (click)="onUser(user)">
-                        <td>{{ user.id }}</td>
-                        <td>{{ user.login }}</td>
-                        <td>{{ user.role.role }}</td>
+                        <td> {{ user.id }} </td>
+                        <td> {{ user.login }} </td>
+                        <td> {{ user.role.role }} </td>
+                        <td> {{ user.email }} </td>
+                        <td> {{ user.firstName }} </td>
+                        <td> {{ user.patronymic }} </td>
+                        <td> {{ user.lastName }} </td>
+                        <td class="ws"> {{ user.registrationDate | date:'dd.mm.yyyy H:mm:ss'}} </td>
                         <td>::</td>
                     </tr>
                 </tbody>

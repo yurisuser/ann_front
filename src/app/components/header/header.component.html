@@ -6,12 +6,12 @@
         <span class="link">Работы</span>
         <span class="link">Контакты</span>
         <span class="link">Галерея</span>
-        <span class="link" *ngIf="(authState$ | async)?.role == 'admin'">
+        <span class="link" *ngIf="(authState$ | async)?.user.role.role == 'admin'">
             <mat-icon class="icon" routerLink="admin" aria-hidden="false">build</mat-icon>
         </span>
         <div>
             <div *ngIf="authState$ | async as authState; else login" (click)="logout()" class="logout">
-                <div class="name">{{authState.login}}</div>
+                <div class="name">{{authState.user.login}}</div>
                 <div class="comment">(logout)</div>
             </div>
             <ng-template #login>

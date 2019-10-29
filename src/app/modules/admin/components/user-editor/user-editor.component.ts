@@ -50,6 +50,10 @@ export class UserEditorComponent implements OnInit {
         users: this.users
       }
     });
-    this.dialogRef.afterClosed().subscribe(x => console.log(x));
+    this.dialogRef.afterClosed()
+      .subscribe(x => this.userSrv.createUser(x)
+      .subscribe(c => console.log(c)
+      )
+      );
   }
 }

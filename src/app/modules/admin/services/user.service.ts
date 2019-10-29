@@ -22,4 +22,10 @@ export class UserService {
   getUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>(`${env.backEnd.address}/user`);
   }
+
+  public createUser(user): Observable<any> {
+    console.log(user);
+    const {confirm, ...data} = user;
+    return this.http.put<any>(`${env.backEnd.address}/user`, data);
+  }
 }

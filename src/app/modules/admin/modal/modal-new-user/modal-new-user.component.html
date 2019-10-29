@@ -1,12 +1,10 @@
 <h2  mat-dialog-title> Create new user </h2>
 <form class="container" [formGroup]="newUser" (ngSubmit)="onSubmit()">
     <mat-form-field>
-        <input matInput placeholder="Name" value="" formControlName="name">
-        <div *ngIf=" newUser.get('name').invalid  && (newUser.get('name').dirty || newUser.get('name').touched)">
-            <mat-error *ngIf="newUser.get('name').errors.isExist">*Already exist username</mat-error>
-            <mat-error *ngIf="newUser.get('name').errors.required">*Required field</mat-error>
-            <mat-error *ngIf="newUser.get('name').errors.minlength">*MinLength name: {{minLength}}</mat-error>
-        </div>
+        <input matInput placeholder="login" value="" formControlName="login">
+        <mat-error *ngIf="newUser.get('login').errors.isExist">*Already exist username</mat-error>
+        <mat-error *ngIf="newUser.get('login').errors.required">*Required field</mat-error>
+        <mat-error *ngIf="newUser.get('login').errors.minlength">*MinLength name: {{minLength}}</mat-error>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Role</mat-label>
@@ -15,6 +13,35 @@
                 {{role.role}}
             </mat-option>
         </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="email" value="" formControlName="email">
+        <mat-error *ngIf="newUser.get('email').hasError('email') && !newUser.get('email').hasError('required')">invalid email</mat-error>
+        <mat-error *ngIf="newUser.get('email').errors.isExist">*Already exist email</mat-error>
+    </mat-form-field>
+    <div  class="password">
+        <mat-form-field>
+            <mat-label>password</mat-label>
+            <input type="password" matInput placeholder="password" value="" formControlName="password">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>confirm password</mat-label>
+            <input type="password" matInput placeholder="confirm password" value="" formControlName="confirm">
+            <mat-error *ngIf="newUser.get('confirm').hasError('notEquivalent')">error confirm password</mat-error>
+        </mat-form-field>
+    </div>
+    <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input matInput placeholder="firstName" value="" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Patronymic</mat-label>
+        <input matInput placeholder="patronymic" value="" formControlName="patronymic">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Last name</mat-label>
+        <input matInput placeholder="lastName" value="" formControlName="lastName">
     </mat-form-field>
     <div>
         <button mat-stroked-button color="primary" type="submit" [disabled]="!newUser.valid">Accept</button>

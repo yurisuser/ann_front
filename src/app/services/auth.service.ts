@@ -14,8 +14,6 @@ import { Router } from '@angular/router';
 })
 
 export class AuthService {
-    private readonly headers = new HttpHeaders({'Content-Type': 'application/json'});
-    private readonly options = { headers: this.headers };
 
     private readonly accessTokenField = 'accessToken';
     private readonly refreshTokenField = 'refreshToken';
@@ -35,7 +33,7 @@ export class AuthService {
     sendLoginPassword(data): Observable<LoginResponse> {
         console.log(data);
 
-        return this.http.post<LoginResponse>(`${env.backEnd.address}/auth/login`, data, this.options)
+        return this.http.post<LoginResponse>(`${env.backEnd.address}/auth/login`, data)
             .pipe(
                 map(
                     x => {
@@ -65,7 +63,6 @@ export class AuthService {
     }
 
     getRefreshToken(): string {
-
         return localStorage.getItem(this.refreshTokenField);
     }
 

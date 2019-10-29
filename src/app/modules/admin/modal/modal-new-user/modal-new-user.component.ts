@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IRole } from '../../models/role';
 import { IUser } from '../../models/user';
 import { ExistUserValidator } from '../../validators/exist-name.validator';
+import { passwordsValidator } from '../../validators/passwords.validator';
 
 @Component({
   selector: 'app-modal-new-user',
@@ -14,15 +15,22 @@ import { ExistUserValidator } from '../../validators/exist-name.validator';
 export class ModalNewUserComponent implements OnInit {
   readonly minLength = 5;
   newUser = new FormGroup({
-    name: new FormControl('', [
+    login: new FormControl('', [
       Validators.required,
       Validators.minLength(this.minLength),
       ExistUserValidator(this.data.users.map(x => x.login)),
     ]),
-    role: new FormControl('', [
+    role: new FormControl('', [Validators.required]),
+    email: new FormControl('', [
       Validators.required,
-    ]),
-  });
+      Validators.email,
+      ExistUserValidator(this.data.users.map(x => x.email))]),
+    password: new FormControl('', [Validators.required]),
+    confirm: new FormControl('', [Validators.required]),
+    firstName: new FormControl(''),
+    patronymic: new FormControl(''),
+    lastName: new FormControl(''),
+  }, passwordsValidator('password', 'confirm'));
 
   constructor(
     public dialogRef: MatDialogRef<ModalNewUserComponent>,
