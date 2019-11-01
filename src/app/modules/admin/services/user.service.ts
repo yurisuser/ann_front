@@ -16,7 +16,7 @@ export class UserService {
   ) { }
 
   public getRoles(): Observable<any> {
-    return this.http.get<IRole>(`${env.backEnd.address}/user/role`);
+    return this.http.get<IRole>(`${env.backEnd.address}/role`);
   }
 
   getUsers(): Observable<IUser[]> {
@@ -24,8 +24,12 @@ export class UserService {
   }
 
   public createUser(user): Observable<any> {
-    console.log(user);
     const {confirm, ...data} = user;
     return this.http.put<any>(`${env.backEnd.address}/user`, data);
+  }
+
+  public verifyExist(param): Observable<number | boolean> {
+    console.log('send: ', param);
+    return this.http.post<any>(`${env.backEnd.address}/user/check`, param);
   }
 }

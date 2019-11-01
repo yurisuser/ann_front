@@ -4,8 +4,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { IRole } from '../../models/role';
 import { IUser } from '../../models/user';
-import { ExistUserValidator } from '../../validators/exist-name.validator';
+import { isExistValidator } from '../../validators/exist-name.validator';
 import { passwordsValidator } from '../../validators/passwords.validator';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-modal-new-user',
@@ -18,13 +19,13 @@ export class ModalNewUserComponent implements OnInit {
     login: new FormControl('', [
       Validators.required,
       Validators.minLength(this.minLength),
-      ExistUserValidator(this.data.users.map(x => x.login)),
-    ]),
+    ], [isExistValidator('login', this.userSrv)]),
     role: new FormControl('', [Validators.required]),
     email: new FormControl('', [
       Validators.required,
       Validators.email,
-      ExistUserValidator(this.data.users.map(x => x.email))]),
+    ], [isExistValidator('email', this.userSrv)]
+    ),
     password: new FormControl('', [Validators.required]),
     confirm: new FormControl('', [Validators.required]),
     firstName: new FormControl(''),
@@ -37,7 +38,8 @@ export class ModalNewUserComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: {
       roles: IRole[],
       users: IUser[],
-    }
+    },
+    private userSrv: UserService,
   ) { }
 
   ngOnInit() {

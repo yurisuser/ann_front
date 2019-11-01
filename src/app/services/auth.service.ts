@@ -31,8 +31,6 @@ export class AuthService {
      }
 
     sendLoginPassword(data): Observable<LoginResponse> {
-        console.log(data);
-
         return this.http.post<LoginResponse>(`${env.backEnd.address}/auth/login`, data)
             .pipe(
                 map(
