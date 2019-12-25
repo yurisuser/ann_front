@@ -1,7 +1,7 @@
 <h2  mat-dialog-title> Create new user </h2>
 <form class="container" [formGroup]="newUser" (ngSubmit)="onSubmit()">
     <mat-form-field>
-        <input matInput placeholder="login" value="" formControlName="login">
+        <input matInput placeholder="login" formControlName="login">
         <mat-error *ngIf="newUser.get('login').hasError('isExist')">*Already exist username</mat-error>
         <mat-error *ngIf="newUser.get('login').hasError('required')">*Required field</mat-error>
         <mat-error *ngIf="newUser.get('login').hasError('minlength')">*MinLength name: {{minLength}}</mat-error>
@@ -16,32 +16,32 @@
     </mat-form-field>
     <mat-form-field>
         <mat-label>Email</mat-label>
-        <input matInput placeholder="email" value="" formControlName="email">
+        <input matInput placeholder="email" formControlName="email">
         <mat-error *ngIf="newUser.get('email').hasError('email') && !newUser.get('email').hasError('required')">invalid email</mat-error>
         <mat-error *ngIf="newUser.get('email').hasError('isExist')">*Already exist email</mat-error>
     </mat-form-field>
     <div  class="password">
         <mat-form-field>
             <mat-label>password</mat-label>
-            <input type="password" matInput placeholder="password" value="" formControlName="password">
+            <input type="password" matInput placeholder="password" formControlName="password">
         </mat-form-field>
         <mat-form-field>
             <mat-label>confirm password</mat-label>
-            <input type="password" matInput placeholder="confirm password" value="" formControlName="confirm">
+            <input type="password" matInput placeholder="confirm password" formControlName="confirm">
             <mat-error *ngIf="newUser.get('confirm').hasError('notEquivalent')">error confirm password</mat-error>
         </mat-form-field>
     </div>
     <mat-form-field>
         <mat-label>First name</mat-label>
-        <input matInput placeholder="firstName" value="" formControlName="firstName">
+        <input matInput placeholder="firstName" formControlName="firstName">
     </mat-form-field>
     <mat-form-field>
         <mat-label>Patronymic</mat-label>
-        <input matInput placeholder="patronymic" value="" formControlName="patronymic">
+        <input matInput placeholder="patronymic" formControlName="patronymic">
     </mat-form-field>
     <mat-form-field>
         <mat-label>Last name</mat-label>
-        <input matInput placeholder="lastName" value="" formControlName="lastName">
+        <input matInput placeholder="lastName" formControlName="lastName">
     </mat-form-field>
     <div>
         <button mat-stroked-button color="primary" type="submit" [disabled]="!newUser.valid">Accept</button>

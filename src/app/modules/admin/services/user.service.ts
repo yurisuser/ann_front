@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 import * as env from '../../../../environments/environment';
 import { IRole } from '../models/role';
@@ -28,8 +28,22 @@ export class UserService {
     return this.http.put<any>(`${env.backEnd.address}/user`, data);
   }
 
+
+  public updateUser(user): Observable<any> {
+    return of(null)
+  }
+
   public verifyExist(param): Observable<number | boolean> {
-    console.log('send: ', param);
     return this.http.post<any>(`${env.backEnd.address}/user/check`, param);
+  }
+
+  public deleteUsers(arr: number[]) {
+    console.log(arr);
+
+    const data = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      body: {ids: arr}
+    };
+    return this.http.delete<any>(`${env.backEnd.address}/user`, data);
   }
 }

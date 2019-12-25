@@ -1,33 +1,53 @@
 <div class="container">
     <div class="content">
-        <div class="adduser" (click)="onCreateUser()">add user</div>
-        <table *ngIf="users">
-                <thead>
-                    <tr class="ws">
-                        <td>id</td>
-                        <td>login</td>
-                        <td>role</td>
-                        <td>first name</td>
-                        <td>email</td>
-                        <td>patronymic</td>
-                        <td>last name</td>
-                        <td>registration</td>
-                        <td>mark</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of users" class="user" (click)="onUser(user)">
-                        <td> {{ user.id }} </td>
-                        <td> {{ user.login }} </td>
-                        <td> {{ user.role.role }} </td>
-                        <td> {{ user.email }} </td>
-                        <td> {{ user.firstName }} </td>
-                        <td> {{ user.patronymic }} </td>
-                        <td> {{ user.lastName }} </td>
-                        <td class="ws"> {{ user.registrationDate | date:'dd.mm.yyyy H:mm:ss'}} </td>
-                        <td>::</td>
-                    </tr>
-                </tbody>
-        </table>
+        <mat-table [dataSource]="users" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="login">
+                <mat-header-cell *matHeaderCellDef> login </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.login}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="role">
+                <mat-header-cell *matHeaderCellDef> role </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.role.role}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="email" class="fit">
+                <mat-header-cell *matHeaderCellDef> email </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef> first name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="patronymic">
+                <mat-header-cell *matHeaderCellDef> patronymic </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.patronymic}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef> last name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="registration">
+                <mat-header-cell *matHeaderCellDef> registration </mat-header-cell>
+                <mat-cell *matCellDef="let element" class="ws"> {{element.registrationDate | date:'dd.MM.yyyy H:mm:ss'}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="check">
+                <mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="onCheckAll($event)"></mat-checkbox>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                        <mat-checkbox (change)="onCheck(element)" [checked]="markedUsers.includes(element)"></mat-checkbox>
+                </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <div class="buttons">
+            <button mat-raised-button (click)="onCreateUser()">Add</button>
+            <button mat-raised-button (click)="onEdit()" [disabled]="markedUsers.length !== 1">Edit</button>
+            <button mat-raised-button (click)="onDeleteUser()" [disabled]="markedUsers.length < 1">Delete</button>
+        </div>
     </div>
 </div>

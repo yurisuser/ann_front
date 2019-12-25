@@ -5,29 +5,30 @@
 .container {
     display: flex;
     flex-flow: column nowrap;
-   align-items: center;
+    align-items: center;
 }
 
 .content {
-    width: 50%;
-    .adduser {
-        cursor: pointer;
-        width: fit-content;
-        padding: 2px;
-        font-size: .8;
-        margin: 1px 0;
+    width: fit-content;
+    font-size: .9em;
+}
+
+.mat-table {
+    display: table;
+
+    .mat-header-row, .mat-row {
+        display: table-row;
+        .mat-header-cell, .mat-cell {
+            padding: 0 10px;
+            display: table-cell;
+            vertical-align: middle;
+            border-bottom: 1px solid rgb(184, 184, 184);
+        }
     }
 }
 
-table {
-    border: 1px solid black;
-    border-spacing: 0;
-    width: 100%;
-    td {
-        border: 1px solid rgb(197, 193, 193);
-        padding: 1px 5px;
-        text-align: center;
-    }
+.checkAll {
+    cursor: pointer;
 }
 
 thead {
@@ -42,4 +43,10 @@ thead {
 
 .ws {
     white-space: nowrap;
+}
+
+.buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
 }
