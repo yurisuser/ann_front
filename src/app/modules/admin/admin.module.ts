@@ -12,17 +12,21 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { HeadComponent } from './components/head/head.component';
 import { UserEditorComponent } from './components/user-editor/user-editor.component';
-import { ModalNewUserComponent } from './modal/modal-new-user/modal-new-user.component';
 import { ConfirmComponent } from './modal/confirm/confirm.component';
 import { DialogService } from './services/dialog.service';
+import { ModalNewUserComponent } from './modal/modal-new-user/modal-new-user.component';
+import { ModalEditUserComponent } from './modal/modal-edit-user/modal-edit-user.component';
+import { ModalPSWChangeForceComponent } from './modal/modal-psw-change-force/modal-pswchange-force/modal-pswchange-force.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
     HeadComponent,
     UserEditorComponent,
-    ModalNewUserComponent,
     ConfirmComponent,
+    ModalNewUserComponent,
+    ModalEditUserComponent,
+    ModalPSWChangeForceComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +41,8 @@ import { DialogService } from './services/dialog.service';
   ],
   entryComponents: [
     ModalNewUserComponent,
+    ModalEditUserComponent,
+    ModalPSWChangeForceComponent,
     ConfirmComponent
   ],
   providers: [

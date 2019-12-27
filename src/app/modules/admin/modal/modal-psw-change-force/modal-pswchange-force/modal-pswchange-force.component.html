@@ -1,0 +1,25 @@
+<div class="container">
+    <div>
+        <h2  mat-dialog-title> ACHTUNG!!!! Passwortänderung erzwingen</h2>
+        <h4>{{ data.user.login}}, id: {{ data.user.id }}</h4>
+    </div>
+    <div>
+        <form [formGroup]="formPsw" (ngSubmit)="onSubmit()">
+            <div  class="password">
+                <mat-form-field>
+                    <mat-label>password</mat-label>
+                    <input type="password" matInput placeholder="password" formControlName="password">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>confirm password</mat-label>
+                    <input type="password" matInput placeholder="confirm password" formControlName="confirm">
+                    <mat-error *ngIf="formPsw.get('confirm').hasError('notEquivalent')">error confirm password</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-stroked-button color="primary" type="submit" [disabled]="!formPsw.valid">Accept</button>
+                <button mat-stroked-button color="primary" (click)="onClose()">Close</button>
+            </div>
+        </form>
+    </div>
+</div>

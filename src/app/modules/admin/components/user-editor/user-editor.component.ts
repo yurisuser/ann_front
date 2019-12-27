@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap, tap, catchError } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 
 import { UserService } from '../../services/user.service';
@@ -8,6 +8,8 @@ import { ModalNewUserComponent } from '../../modal/modal-new-user/modal-new-user
 import { IRole } from '../../models/role';
 import { DialogService } from '../../services/dialog.service';
 import { IUserData } from '../../models/userData';
+import { ModalEditUserComponent } from '../../modal/modal-edit-user/modal-edit-user.component';
+import { ModalPSWChangeForceComponent } from '../../modal/modal-psw-change-force/modal-pswchange-force/modal-pswchange-force.component';
 
 @Component({
   selector: 'app-user-editor',
@@ -19,7 +21,9 @@ export class UserEditorComponent implements OnInit {
   public roles: IRole[];
   public users: IUser[];
   public markedUsers: IUser[] = [];
-  dialogRefCreateUser;
+  private dialogRefCreateUser;
+  private dialogRefEditUser;
+  private dialogRefPswForce;
   public displayedColumns = ['id', 'login', 'role', 'email', 'firstName', 'patronymic', 'lastName', 'registration', 'check'];
 
   constructor(
@@ -86,17 +90,17 @@ export class UserEditorComponent implements OnInit {
 
   }
 
-  onEdit() {
+  onEditUser() {
     // tslint:disable-next-line: no-unused-expression
-    !this.dialogRefCreateUser || this.dialogRefCreateUser.close();
-    this.dialogRefCreateUser =  this.dialog.open(ModalNewUserComponent, {
+    !this.dialogRefEditUser || this.dialogRefEditUser.close();
+    this.dialogRefEditUser =  this.dialog.open(ModalEditUserComponent, {
       data: {
         isEdit: true,
         roles: this.roles,
         user: this.markedUsers[0]
       }
     });
-    this.dialogRefCreateUser.afterClosed().pipe(
+    this.dialogRefEditUser.afterClosed().pipe(
       switchMap(x => this.userSrv.updateUser(x)),
       switchMap(() => this.userSrv.getUsers())
     )
@@ -104,7 +108,6 @@ export class UserEditorComponent implements OnInit {
       this.users = x;
       this.markedUsers = [];
     });
-
   }
 
   onCheck(user) {
@@ -119,5 +122,24 @@ export class UserEditorComponent implements OnInit {
       return this.markedUsers = [];
     }
     this.markedUsers = this.users.slice(0, this.users.length);
+  }
+
+  onChangeForcePassword() {
+    // tslint:disable-next-line: no-unused-expression
+    !this.dialogRefPswForce || this.dialogRefPswForce.close();
+    this.dialogRefPswForce =  this.dialog.open(ModalPSWChangeForceComponent, {
+      data: {
+        user: this.markedUsers[0]
+      }
+    });
+    this.dialogRefPswForce.afterClosed().pipe(
+      switchMap(x => this.userSrv.forcePswChange(x)),
+      switchMap(() => this.userSrv.getUsers())
+    )
+    .subscribe(x => {
+      this.users = x;
+      this.markedUsers = [];
+    });
+
   }
 }

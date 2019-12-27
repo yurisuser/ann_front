@@ -4,18 +4,18 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { IRole } from '../../models/role';
 import { isExistValidator } from '../../validators/exist-name.validator';
-import { passwordsValidator } from '../../validators/passwords.validator';
 import { UserService } from '../../services/user.service';
 import { IUserData } from '../../models/userData';
 
 @Component({
-  selector: 'app-modal-new-user',
-  templateUrl: './modal-new-user.component.html',
-  styleUrls: ['./modal-new-user.component.scss']
+  selector: 'app-modal-edit-user',
+  templateUrl: './modal-edit-user.component.html',
+  styleUrls: ['./modal-edit-user.component.scss']
 })
-export class ModalNewUserComponent implements OnInit {
+export class ModalEditUserComponent implements OnInit {
   readonly minLength = 5;
-  newUser = new FormGroup({
+  editUser = new FormGroup({
+    id: new FormControl(this.data.user.id || ''),
     login: new FormControl(this.data.user.login, [
       Validators.required,
       Validators.minLength(this.minLength),
@@ -26,15 +26,13 @@ export class ModalNewUserComponent implements OnInit {
       Validators.email,
     ], [isExistValidator('email', this.userSrv, this.data.user)]
     ),
-    password: new FormControl('', [Validators.required]),
-    confirm: new FormControl('', [Validators.required]),
     firstName: new FormControl(this.data.user.firstName),
     patronymic: new FormControl(this.data.user.patronymic),
     lastName: new FormControl(this.data.user.lastName),
-  }, passwordsValidator('password', 'confirm'));
+  });
 
   constructor(
-    public dialogRef: MatDialogRef<ModalNewUserComponent>,
+    public dialogRef: MatDialogRef<ModalEditUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {
       isEdit: boolean,
       roles: IRole[],
@@ -43,14 +41,13 @@ export class ModalNewUserComponent implements OnInit {
     private userSrv: UserService,
   ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onClose() {
     this.dialogRef.close();
   }
 
   onSubmit() {
-    this.dialogRef.close(this.newUser.value);
+    this.dialogRef.close(this.editUser.value);
   }
 }

@@ -24,13 +24,17 @@ export class UserService {
   }
 
   public createUser(user): Observable<any> {
+    console.log('createuser');
+
     const {confirm, ...data} = user;
-    return this.http.put<any>(`${env.backEnd.address}/user`, data);
+    return this.http.put<any>(`${env.backEnd.address}/user/create`, data);
   }
 
-
   public updateUser(user): Observable<any> {
-    return of(null)
+    console.log('updateUser srv', user);
+
+    const {confirm, ...data} = user;
+    return this.http.post<any>(`${env.backEnd.address}/user/update`, data);
   }
 
   public verifyExist(param): Observable<number | boolean> {
@@ -38,12 +42,14 @@ export class UserService {
   }
 
   public deleteUsers(arr: number[]) {
-    console.log(arr);
-
     const data = {
       headers: new HttpHeaders({'Content-Type': 'application/json'}),
       body: {ids: arr}
     };
     return this.http.delete<any>(`${env.backEnd.address}/user`, data);
+  }
+
+  public forcePswChange(form) {
+    return this.http.post<any>(`${env.backEnd.address}/user/forcepswchange`, {id: form.id, password: form.password.password});
   }
 }

@@ -38,7 +38,7 @@
                     <mat-checkbox (change)="onCheckAll($event)"></mat-checkbox>
                 </mat-header-cell>
                 <mat-cell *matCellDef="let element">
-                        <mat-checkbox (change)="onCheck(element)" [checked]="markedUsers.includes(element)"></mat-checkbox>
+                    <mat-checkbox (change)="onCheck(element)" [checked]="markedUsers.includes(element)"></mat-checkbox>
                 </mat-cell>
             </ng-container>
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -46,7 +46,8 @@
         </mat-table>
         <div class="buttons">
             <button mat-raised-button (click)="onCreateUser()">Add</button>
-            <button mat-raised-button (click)="onEdit()" [disabled]="markedUsers.length !== 1">Edit</button>
+            <button mat-raised-button (click)="onEditUser()" [disabled]="markedUsers.length !== 1">Edit</button>
+            <button mat-raised-button (click)="onChangeForcePassword()" [disabled]="markedUsers.length !== 1">Psw</button>
             <button mat-raised-button (click)="onDeleteUser()" [disabled]="markedUsers.length < 1">Delete</button>
         </div>
     </div>

@@ -1,0 +1,42 @@
+<h2  mat-dialog-title> Edit user </h2>
+<form class="container" [formGroup]="editUser" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <input matInput placeholder="id" formControlName="id" readonly>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="login" formControlName="login">
+        <mat-error *ngIf="editUser.get('login').hasError('isExist')">*Already exist username</mat-error>
+        <mat-error *ngIf="editUser.get('login').hasError('required')">*Required field</mat-error>
+        <mat-error *ngIf="editUser.get('login').hasError('minlength')">*MinLength name: {{minLength}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+            <mat-option *ngFor="let role of data.roles" [value]="role.id">
+                {{role.role}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="email" formControlName="email">
+        <mat-error *ngIf="editUser.get('email').hasError('email') && !editUser.get('email').hasError('required')">invalid email</mat-error>
+        <mat-error *ngIf="editUser.get('email').hasError('isExist')">*Already exist email</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input matInput placeholder="firstName" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Patronymic</mat-label>
+        <input matInput placeholder="patronymic" formControlName="patronymic">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Last name</mat-label>
+        <input matInput placeholder="lastName" formControlName="lastName">
+    </mat-form-field>
+    <div>
+        <button mat-stroked-button color="primary" type="submit" [disabled]="!editUser.valid">Accept</button>
+        <button mat-stroked-button color="primary" (click)="onClose()">Close</button>
+    </div>
+</form>
