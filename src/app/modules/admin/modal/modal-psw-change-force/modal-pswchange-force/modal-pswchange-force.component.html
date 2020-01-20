@@ -16,7 +16,7 @@
                     <mat-error *ngIf="formPsw.get('confirm').hasError('notEquivalent')">error confirm password</mat-error>
                 </mat-form-field>
             </div>
-            <div>
+            <div class="buttons">
                 <button mat-stroked-button color="primary" type="submit" [disabled]="!formPsw.valid">Accept</button>
                 <button mat-stroked-button color="primary" (click)="onClose()">Close</button>
             </div>

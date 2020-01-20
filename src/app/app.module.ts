@@ -15,6 +15,16 @@ import { AuthComponent } from './components/auth/auth.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
+import { LeftMenuComponent } from './components/left-menu/left-menu.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
+import { GaleryComponent } from './components/galery/galery.component';
+import { SeasonComponent } from './components/season/season.component';
+import { IdeaComponent } from './components/idea/idea.component';
+import { CallbackComponent } from './components/callback/callback.component';
+import { PolygraphyComponent } from './components/polygraphy/polygraphy.component';
+import { LargePrintComponent } from './components/large-print/large-print.component';
+import { SuvenirkaComponent } from './components/suvenirka/suvenirka.component';
+import { NaruzhkaComponent } from './components/naruzhka/naruzhka.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +33,16 @@ import { MainComponent } from './components/main/main.component';
     HeaderComponent,
     FooterComponent,
     MainComponent,
+    LeftMenuComponent,
+    CatalogComponent,
+    GaleryComponent,
+    SeasonComponent,
+    IdeaComponent,
+    CallbackComponent,
+    PolygraphyComponent,
+    LargePrintComponent,
+    SuvenirkaComponent,
+    NaruzhkaComponent,
   ],
   imports: [
     BrowserModule,
