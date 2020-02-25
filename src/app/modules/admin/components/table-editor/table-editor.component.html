@@ -1,0 +1,22 @@
+<div class="container">
+    <div>
+        <span>Select table:</span>
+        <span>
+            <select name="table" (change)="onSelectTable($event)">
+                <option selected="selected" value="">Select table</option>
+                <option value="types">Catalog types</option>
+                <option value="elements">Catalog elements</option>
+            </select>
+        </span>
+    </div>
+    <div *ngIf="selectedTableHeaders">
+        <table>
+            <th *ngFor="let column of selectedTableHeaders"> {{ column }} </th>
+            <tr *ngFor="let row of selectedTableData; let i=index">
+                <td *ngFor="let cell of row">
+                    {{ cell }}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
