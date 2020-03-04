@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 
@@ -32,12 +32,13 @@ import { TableEditorComponent } from './components/table-editor/table-editor.com
   ],
   imports: [
     CommonModule,
+    FormsModule,
     AdminRoutingModule,
+    ReactiveFormsModule,
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    ReactiveFormsModule,
     MatCheckboxModule,
     MatTableModule,
   ],

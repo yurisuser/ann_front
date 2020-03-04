@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: AdminComponent,
     children: [
       {path: 'usereditor', component: UserEditorComponent},
-      {path: 'tableeditor', component: TableEditorComponent}
+      {path: 'tableeditor', component: TableEditorComponent},
     ]
  }
 ];

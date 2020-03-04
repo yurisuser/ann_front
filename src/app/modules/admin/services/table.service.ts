@@ -20,4 +20,12 @@ export class TableService {
   getCatalogElements(): Observable<any> {
     return this.http.get(`${env.backEnd.address}/catalog/elements`);
   }
+
+  updateCatalogType(type): Observable<any> {
+    return this.http.post(`${env.backEnd.address}/catalog/type`, type);
+  }
+
+  updateCatalogElement(type): Observable<any> {
+    return this.http.post(`${env.backEnd.address}/catalog/element`, type);
+  }
 }
