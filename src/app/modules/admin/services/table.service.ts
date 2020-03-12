@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import * as env from '../../../../environments/environment';
@@ -27,5 +27,29 @@ export class TableService {
 
   updateCatalogElement(type): Observable<any> {
     return this.http.post(`${env.backEnd.address}/catalog/element`, type);
+  }
+
+  createCatalogtype(type): Observable<any> {
+    return this.http.put(`${env.backEnd.address}/catalog/element`, type);
+  }
+
+  createCatalogElement(element): Observable<any> {
+    return this.http.put(`${env.backEnd.address}/catalog/element`, element);
+  }
+
+  deleteCatalogElement(id) {
+    const data = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      body: {id}
+    };
+    return this.http.delete(`${env.backEnd.address}/catalog/element`, data);
+  }
+
+  deleteCatalogType(id) {
+    const data = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      body: {id}
+    };
+    return this.http.delete(`${env.backEnd.address}/catalog/type`, data);
   }
 }

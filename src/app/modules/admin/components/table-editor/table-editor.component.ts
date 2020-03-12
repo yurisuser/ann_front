@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TableService } from '../../services/table.service';
+import { DialogService } from '../../services/dialog.service';
 
 @Component({
   selector: 'app-table-editor',
@@ -9,7 +10,7 @@ import { TableService } from '../../services/table.service';
 })
 export class TableEditorComponent implements OnInit {
   public imageExtensions = ['.jpg', '.jpeg', '.gif', '.png'];
-  public selectedTableData;
+  public selectedTableData = [];
   public selectedTableHeaders;
   public selectedTableName;
   public editableRowIndex: number;
@@ -26,6 +27,7 @@ export class TableEditorComponent implements OnInit {
 
   constructor(
     private tableSrv: TableService,
+    private dialogSrv: DialogService,
   ) { }
 
   ngOnInit() {
@@ -64,6 +66,30 @@ export class TableEditorComponent implements OnInit {
       return;
     }
     this.editableRowIndex = null;
+  }
+
+  async onDeleteRow(rowIndex) {
+    if (rowIndex >= 0) {
+      const message = () => {
+        return `Are you sure to delete ${rowIndex} row?`;
+      };
+      if (await this.dialogSrv.confirm(message())) {
+        this.tableSrv.deleteCatalogElement(this.selectedTableData[rowIndex][0])
+          .subscribe(() => this.onLoadTable(this.selectedTableName));
+      }
+    }
+
+  }
+  onAdd() {
+    const n = [];
+    for (let i = 0; i < this.selectedTableData.length; i++) {
+      n.push([]);
+    }
+
+    this.selectedTableData.push(n);
+    console.log(this.selectedTableData);
+
+    this.editableRowIndex = this.selectedTableData.length;
   }
 
   onAccept(row) {

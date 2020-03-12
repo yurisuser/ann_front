@@ -29,6 +29,15 @@ table {
     flex-grow: 1;
 }
 
+.edit-del {
+    display: flex;
+    flex-direction: row;
+    div {
+        margin: 0 3px;
+        cursor: pointer;
+    }
+}
+
 .buttons {
     display: flex;
     justify-content: flex-end;

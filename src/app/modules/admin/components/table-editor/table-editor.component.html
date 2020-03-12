@@ -27,10 +27,13 @@
                             img
                         </ng-template>
                     </td>
-                    <td>
-                        <div (click)="onEditRow(ri)">
-                            edit
-                        </div>
+                    <td class="edit-del">
+                            <div (click)="onEditRow(ri)">
+                                edit
+                            </div>
+                            <div (click)="onDeleteRow(ri)">
+                                delete
+                            </div>
                     </td>
                 </ng-container>
                 <ng-template #editebleRowTemplate>
@@ -52,9 +55,7 @@
         </table>
         <br>
         <span class="buttons">
-            <button>add</button>
-            <button>delete</button>
-            <button>accept</button>
+            <button (click)="onAdd()">add</button>
         </span>
     </div>
 </div>
