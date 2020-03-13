@@ -1,18 +1,54 @@
 <div class="container">
-    <div *ngIf="menu">
-        <div *ngFor="let str of menu">
-            <div class="frame-string-menu" routerLinkActive = "active">
-                <div class="text" routerLink = "{{str.param}}">
-                    {{ str.name }}
-                </div>
-                <div class="line"></div>
-                <img src="../../../assets/pic/arrow_right_white_18dp.png" alt="">
+    <div>
+        <div class="frame-string-menu" routerLinkActive = "active">
+            <div class="text" routerLink ="{{menu[0].param}}" >
+                Каталлог продукции
             </div>
-            <div *ngIf="router.url == str.param">
-                <div *ngFor="let link of str.sub"  class="link-sub">
-                    {{link.name}}
-                </div>
+            <div class="line"></div>
+            <img src="../../../assets/pic/arrow_right_white_18dp.png" alt="">
+        </div>
+        <div *ngIf="router.url == menu[0].param">
+            <div *ngFor="let item of catalogSubMenu" class="link-sub">
+                {{ item.viewName }}
             </div>
         </div>
+
+        <div class="frame-string-menu" routerLinkActive = "active">
+            <div class="text" routerLink = '/main/galery'>
+                Галерея макетов
+            </div>
+            <div class="line"></div>
+            <img src="../../../assets/pic/arrow_right_white_18dp.png" alt="">
+        </div>
+        <div *ngIf="router.url == menu[1].param">
+            <div *ngFor="let item of catalogSubMenu" class="link-sub">
+                {{ item.viewName }}
+            </div>
+        </div>
+
+        <div class="frame-string-menu" routerLinkActive = "active">
+            <div class="text" routerLink = '/main/season'>
+                Сезонные товары
+            </div>
+            <div class="line"></div>
+            <img src="../../../assets/pic/arrow_right_white_18dp.png" alt="">
+        </div>
+
+        <div class="frame-string-menu" routerLinkActive = "active">
+            <div class="text" routerLink = '/main/idea'>
+                Оригинальные изделия
+            </div>
+            <div class="line"></div>
+            <img src="../../../assets/pic/arrow_right_white_18dp.png" alt="">
+        </div>
+
+        <div class="frame-string-menu" routerLinkActive = "active">
+            <div class="text" routerLink = '/main/callback'>
+                Отзывы / предложения
+            </div>
+            <div class="line"></div>
+            <img src="../../../assets/pic/arrow_right_white_18dp.png" alt="">
+        </div>
+
     </div>
 </div>
