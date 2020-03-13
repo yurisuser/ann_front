@@ -18,6 +18,9 @@ import { ModalNewUserComponent } from './modal/modal-new-user/modal-new-user.com
 import { ModalEditUserComponent } from './modal/modal-edit-user/modal-edit-user.component';
 import { ModalPSWChangeForceComponent } from './modal/modal-psw-change-force/modal-pswchange-force/modal-pswchange-force.component';
 import { TableEditorComponent } from './components/table-editor/table-editor.component';
+import { CatalogTypesEditorComponent } from './components/catalog-types-editor/catalog-types-editor.component';
+import { ModalEditCatalogTypeComponent } from './modal/modal-edit-catalog-type/modal-edit-catalog-type.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { TableEditorComponent } from './components/table-editor/table-editor.com
     ModalEditUserComponent,
     ModalPSWChangeForceComponent,
     TableEditorComponent,
+    CatalogTypesEditorComponent,
+    ModalEditCatalogTypeComponent,
+    ErrorPageComponent,
   ],
   imports: [
     CommonModule,
@@ -46,6 +52,7 @@ import { TableEditorComponent } from './components/table-editor/table-editor.com
     ModalNewUserComponent,
     ModalEditUserComponent,
     ModalPSWChangeForceComponent,
+    ModalEditCatalogTypeComponent,
     ConfirmComponent
   ],
   providers: [

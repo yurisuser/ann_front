@@ -1,62 +1,9 @@
 <div class="container">
-    <br>
-    <div>
-        <span>Select table:</span>
-        <span>
-            <select name="table" (change)="onLoadTable($event.target.value)">
-                <option selected="selected" value="">Select table</option>
-                <option value="types">Catalog types</option>
-                <option value="elements">Catalog elements</option>
-            </select>
-        </span>
+    <div class="links">
+        <span routerLink="/admin/tableeditor/types">Catalog submenu</span>
+        <span routerLink="/admin/tableeditor/elements">Catalog elements</span>
     </div>
     <br>
-    <div *ngIf="selectedTableHeaders" class="tableCont">
-        <table>
-            <tr>
-                <th *ngFor="let column of selectedTableHeaders"> {{ column }} </th>
-                <th></th>
-            </tr>
-            <tr *ngFor="let row of selectedTableData; let ri=index">
-                <ng-container *ngIf="editableRowIndex !== ri; else editebleRowTemplate">
-                    <td *ngFor="let cell of row">
-                        <div *ngIf="!isImage(cell); else imgTemplate">
-                            {{ cell }}
-                        </div>
-                        <ng-template #imgTemplate>
-                            img
-                        </ng-template>
-                    </td>
-                    <td class="edit-del">
-                            <div (click)="onEditRow(ri)">
-                                edit
-                            </div>
-                            <div (click)="onDeleteRow(ri)">
-                                delete
-                            </div>
-                    </td>
-                </ng-container>
-                <ng-template #editebleRowTemplate>
-                        <td *ngFor="let cell of row; let ci=index">
-                            <div *ngIf="!isImage(cell); else imgTemplate">
-                                <input type="text" [(ngModel)]="selectedTableData[ri][ci]" class="input">
-                            </div>
-                            <ng-template #imgTemplate>
-                                img
-                            </ng-template>
-                        </td>
-                        <td>
-                            <div (click)="onAccept(selectedTableData[ri])">
-                                accept
-                            </div>
-                        </td>
-                </ng-template>
-            </tr>
-        </table>
-        <br>
-        <span class="buttons">
-            <button (click)="onAdd()">add</button>
-        </span>
-    </div>
+    <router-outlet></router-outlet>
 </div>
 

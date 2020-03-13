@@ -4,12 +4,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { UserEditorComponent } from './components/user-editor/user-editor.component';
 import { TableEditorComponent } from './components/table-editor/table-editor.component';
+import { CatalogTypesEditorComponent } from './components/catalog-types-editor/catalog-types-editor.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent,
     children: [
       {path: 'usereditor', component: UserEditorComponent},
-      {path: 'tableeditor', component: TableEditorComponent},
+      {path: 'tableeditor', component: TableEditorComponent,
+        children: [
+          {path: 'types', component: CatalogTypesEditorComponent},
+          {path: '**', component: ErrorPageComponent},
+        ]
+      },
     ]
  }
 ];

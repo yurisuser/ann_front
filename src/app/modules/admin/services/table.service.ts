@@ -30,7 +30,7 @@ export class TableService {
   }
 
   createCatalogtype(type): Observable<any> {
-    return this.http.put(`${env.backEnd.address}/catalog/element`, type);
+    return this.http.put(`${env.backEnd.address}/catalog/type`, type);
   }
 
   createCatalogElement(element): Observable<any> {
@@ -46,6 +46,8 @@ export class TableService {
   }
 
   deleteCatalogType(id) {
+    console.log(id);
+
     const data = {
       headers: new HttpHeaders({'Content-Type': 'application/json'}),
       body: {id}

@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="content">
+        Submenu Edit
+        <br>
+        <br>
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef> name </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="viewName">
+                    <mat-header-cell *matHeaderCellDef> viewName </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.viewName}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="order">
+                    <mat-header-cell *matHeaderCellDef> order </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.order}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="check">
+                    <mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox (change)="onCheckAll($event)"></mat-checkbox>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <mat-checkbox (change)="onCheck(element)" [checked]="markedElement.includes(element)"></mat-checkbox>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <div class="buttons">
+            <button mat-raised-button (click)="onCreate()">Add</button>
+            <button mat-raised-button (click)="onEdit()" [disabled]="markedElement.length !== 1">Edit</button>
+            <button mat-raised-button (click)="onDelete()" [disabled]="markedElement.length < 1">Delete</button>
+        </div>
+
+    </div>
+
+</div>
