@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { IincludeMenu } from 'src/app/models/includeMenu';
-
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -9,12 +7,8 @@ import { IincludeMenu } from 'src/app/models/includeMenu';
 })
 export class MainComponent implements OnInit {
 
-  public menu: IincludeMenu[];
-
   constructor() {}
 
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

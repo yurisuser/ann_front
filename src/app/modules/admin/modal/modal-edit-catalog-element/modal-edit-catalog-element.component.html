@@ -1,0 +1,26 @@
+<h2  mat-dialog-title>{{ data.text }}</h2>
+<form class="container" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <input matInput placeholder="id" formControlName="id" readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="viewName" formControlName="viewName">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="img" formControlName="img">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="number" matInput placeholder="catalogType" formControlName="catalogType">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="number" matInput placeholder="order" formControlName="order">
+        </mat-form-field>
+        <div>
+            <button mat-stroked-button color="primary" type="submit" [disabled]="!formGroup.valid">Accept</button>
+            <button mat-stroked-button color="primary" (click)="onClose()">Close</button>
+        </div>
+    </form>

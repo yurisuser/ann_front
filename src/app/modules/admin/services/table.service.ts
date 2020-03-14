@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import * as env from '../../../../environments/environment';
+import { ICatalogElement } from '../models/catalogElements';
 
 @Injectable({
   providedIn: 'root'

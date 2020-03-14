@@ -21,6 +21,8 @@ import { TableEditorComponent } from './components/table-editor/table-editor.com
 import { CatalogTypesEditorComponent } from './components/catalog-types-editor/catalog-types-editor.component';
 import { ModalEditCatalogTypeComponent } from './modal/modal-edit-catalog-type/modal-edit-catalog-type.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { CatalogElementsEditorComponent } from './components/catalog-elements-editor/catalog-elements-editor.component';
+import { ModalEditCatalogElementComponent } from './modal/modal-edit-catalog-element/modal-edit-catalog-element.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     CatalogTypesEditorComponent,
     ModalEditCatalogTypeComponent,
     ErrorPageComponent,
+    CatalogElementsEditorComponent,
+    ModalEditCatalogElementComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +57,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     ModalEditUserComponent,
     ModalPSWChangeForceComponent,
     ModalEditCatalogTypeComponent,
+    ModalEditCatalogElementComponent,
     ConfirmComponent
   ],
   providers: [

@@ -17,7 +17,6 @@ export class CatalogTypesEditorComponent implements OnInit {
     public dataSource: ICatalogTypes[];
     public displayedColumns = ['id', 'name', 'viewName', 'order', 'check'];
     public markedElement = [];
-    private dialogRefCreate;
     private dialogRefEdit;
 
     constructor(
