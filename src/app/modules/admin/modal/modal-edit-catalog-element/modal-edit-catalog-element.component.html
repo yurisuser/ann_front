@@ -9,7 +9,14 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input type="text" matInput placeholder="img" formControlName="img">
+            <input type="text" matInput formControlName="img" hidden>
+            <ng-container *ngIf="data.element.img; else elseTemplate">
+                <img src="{{getFullThumbPath()}}" alt="" (click)="onClickImg()">
+
+            </ng-container>
+            <ng-template #elseTemplate>
+                <span class="cursor" (click)="onClickImg()">Click for image!</span>
+            </ng-template>
         </mat-form-field>
 
         <mat-form-field>

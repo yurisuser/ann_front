@@ -1,0 +1,57 @@
+.container {
+    display: flex;
+    flex-flow: column;
+    height: fit-content;
+    width: fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.top-block {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.file {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 10px;
+}
+
+.empty {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+img {
+    max-height: 600px;
+    width: auto;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.upload-block {
+    display: flex;
+    flex-direction: column;
+
+    .upload-preview {
+        height: 250px;
+        width: auto;
+    }
+}
+
+.noImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    background-color: gray;
+    border: darkgrey 1px solid;
+}

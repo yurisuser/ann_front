@@ -6,6 +6,8 @@ import { TableService } from '../../services/table.service';
 import { DialogService } from '../../services/dialog.service';
 import { ICatalogElement } from '../../models/catalogElements';
 import { ModalEditCatalogElementComponent } from '../../modal/modal-edit-catalog-element/modal-edit-catalog-element.component';
+import * as env from '../../../../../environments/environment';
+import { ImageService } from '../../services/image.service';
 
 @Component({
   selector: 'app-catalog-elements-editor',
@@ -23,6 +25,7 @@ export class CatalogElementsEditorComponent implements OnInit {
       private tableSrv: TableService,
       public dialog: MatDialog,
       private dialogSrv: DialogService,
+      private imgSrv: ImageService,
   ) { }
 
   ngOnInit() {
@@ -104,5 +107,9 @@ export class CatalogElementsEditorComponent implements OnInit {
           return this.markedElement = [];
       }
       this.markedElement = this.dataSource.slice(0, this.dataSource.length);
+  }
+
+  getFullPath(fileName: string): string {
+      return this.imgSrv.getFullThumbPath(fileName);
   }
 }

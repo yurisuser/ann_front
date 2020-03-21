@@ -1,8 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 
 import { ICatalogElement } from '../../models/catalogElements';
+import { ImageService } from '../../services/image.service';
+import { ModalImagerComponent } from '../modal-imager/modal-imager.component';
 
 @Component({
   selector: 'app-modal-edit-catalog-element',
@@ -19,13 +21,17 @@ export class ModalEditCatalogElementComponent implements OnInit {
     catalogType: new FormControl(this.data.element.catalogType || '', [Validators.required]),
     order: new FormControl(this.data.element.order || 1, [Validators.required]),
   });
+  private openDialogRefEdit;
+  isExistImage: boolean;
 
   constructor(
-      public dialogRef: MatDialogRef<ModalEditCatalogElementComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: {
-        element: ICatalogElement,
-        text: string,
-      }
+    public dialog: MatDialog,
+    private imgSrv: ImageService,
+    public dialogRef: MatDialogRef<ModalEditCatalogElementComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: {
+      element: ICatalogElement,
+      text: string,
+    }
   ) {}
 
   ngOnInit() {}
@@ -36,5 +42,33 @@ export class ModalEditCatalogElementComponent implements OnInit {
 
   onSubmit() {
     this.dialogRef.close(this.formGroup.value);
+  }
+
+  onEdit() {
+    console.log(this.data.element.img);
+
+    // tslint:disable-next-line: no-unused-expression
+    !this.openDialogRefEdit || this.openDialogRefEdit.close();
+    this.openDialogRefEdit =  this.dialog.open(ModalImagerComponent, {data: { fileName: this.data.element.img }});
+    this.openDialogRefEdit.afterClosed().pipe(
+        // switchMap(x => this.tableSrv.updateCatalogElement(x)),
+        // switchMap(() => this.tableSrv.getCatalogElements())
+    )
+    .subscribe(x => {
+      console.log(x);
+
+        // this.dataSource = x;
+        // this.markedElement = [];
+    });
+}
+
+  getFullThumbPath() {
+    return this.imgSrv.getFullThumbPath(this.formGroup.controls.img.value);
+  }
+
+  onClickImg() {
+    console.log('click');
+    this.onEdit();
+
   }
 }

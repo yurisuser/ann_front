@@ -23,6 +23,8 @@ import { ModalEditCatalogTypeComponent } from './modal/modal-edit-catalog-type/m
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { CatalogElementsEditorComponent } from './components/catalog-elements-editor/catalog-elements-editor.component';
 import { ModalEditCatalogElementComponent } from './modal/modal-edit-catalog-element/modal-edit-catalog-element.component';
+import { ImagerComponent } from './components/imager/imager.component';
+import { ModalImagerComponent } from './modal/modal-imager/modal-imager.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ModalEditCatalogElementComponent } from './modal/modal-edit-catalog-ele
     ErrorPageComponent,
     CatalogElementsEditorComponent,
     ModalEditCatalogElementComponent,
+    ImagerComponent,
+    ModalImagerComponent,
   ],
   imports: [
     CommonModule,
@@ -58,6 +62,7 @@ import { ModalEditCatalogElementComponent } from './modal/modal-edit-catalog-ele
     ModalPSWChangeForceComponent,
     ModalEditCatalogTypeComponent,
     ModalEditCatalogElementComponent,
+    ModalImagerComponent,
     ConfirmComponent
   ],
   providers: [

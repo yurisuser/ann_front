@@ -21,6 +21,7 @@ mat-table {
             display: table-cell;
             vertical-align: middle;
             border-bottom: 1px solid rgb(184, 184, 184);
+            text-align: center;
         }
     }
 }
@@ -29,4 +30,16 @@ mat-table {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-end;
+}
+
+.thumb {
+    height: 50px;
+    width: auto;
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+}
+
+img {
+    margin: 3px;
 }

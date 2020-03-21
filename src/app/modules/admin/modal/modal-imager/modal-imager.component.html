@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="top-block">
+        <div class="file" *ngIf="currentFile">
+            File: "{{data.fileName}}"
+        </div>
+        <div class="empty"></div>
+        <button mat-stroked-button color="primary" (click)="onUpload()"> Upload </button>
+        <button mat-stroked-button color="primary" (click)="onSelect()"> Select </button>
+        <br>
+    </div>
+    <br>
+    <!-- normal -->
+    <div *ngIf="status === 0">
+        <ng-container *ngIf="currentFile; else elseTemplate">
+            <img src="{{getImgPath()}}" alt="">
+        </ng-container>
+        <ng-template #elseTemplate>
+            <div class="noImage">No Image</div>
+        </ng-template>
+    </div>
+    <!-- upload -->
+    <div *ngIf="status === 1">
+        Upload:
+        <form method="post" enctype="multipart/form-data" class="upload-block">
+            <input type="file" name="avatar" (change)="onSelectImage($event)">
+            <img [src]="preview" *ngIf="preview" class="upload-preview">
+            <br>
+            <button mat-stroked-button color="primary" (click)="onAcceptUpload()"> Save </button>
+        </form>
+    </div>
+    <!-- select -->
+    <div *ngIf="status === 2">
+        2
+    </div>
+
+    <br>
+    <div class="buttons">
+        <button mat-stroked-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!currentFile">Accept</button>
+        <button mat-stroked-button color="primary" (click)="onClose()">Close</button>
+    </div>
+</div>

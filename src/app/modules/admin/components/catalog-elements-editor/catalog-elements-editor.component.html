@@ -15,9 +15,11 @@
                     <mat-cell *matCellDef="let element"> {{element.viewName}} </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="img">
+                <ng-container matColumnDef="img" class="line">
                     <mat-header-cell *matHeaderCellDef> img </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.img}} </mat-cell>
+                    <mat-cell *matCellDef="let element">
+                        <img src="{{ getFullPath(element.img)}}" alt="" class="thumb">
+                    </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="catalogType">

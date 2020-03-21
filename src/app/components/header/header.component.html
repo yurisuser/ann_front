@@ -1,27 +1,3 @@
-<!-- <mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <span class="link">LOGO</span>
-        <span class="spacer"></span>
-        <span class="link">Новости</span>
-        <span class="link">Работы</span>
-        <span class="link">Контакты</span>
-        <span class="link">Галерея</span>
-        <span class="link" *ngIf="(authState$ | async)?.user.role.role == 'admin'">
-            <mat-icon class="icon" routerLink="admin" aria-hidden="false">build</mat-icon>
-        </span>
-        <div>
-            <div *ngIf="authState$ | async as authState; else login" (click)="logout()" class="logout">
-                <div class="name">{{authState.user.login}}</div>
-                <div class="comment">(logout)</div>
-            </div>
-            <ng-template #login>
-                <mat-icon class="icon link" aria-hidden="false" routerLink="auth">person</mat-icon>
-            </ng-template>
-
-        </div>
-    </mat-toolbar-row>
-</mat-toolbar> -->
-
 <div class="top-line">
     <img src="../../../assets/pic/head/logo.png" alt="logo" class="logo" routerLink="">
     <div class="head-text" routerLink="">
