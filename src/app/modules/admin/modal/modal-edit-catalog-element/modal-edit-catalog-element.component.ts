@@ -45,21 +45,16 @@ export class ModalEditCatalogElementComponent implements OnInit {
   }
 
   onEdit() {
-    console.log(this.data.element.img);
-
     // tslint:disable-next-line: no-unused-expression
     !this.openDialogRefEdit || this.openDialogRefEdit.close();
     this.openDialogRefEdit =  this.dialog.open(ModalImagerComponent, {data: { fileName: this.data.element.img }});
-    this.openDialogRefEdit.afterClosed().pipe(
-        // switchMap(x => this.tableSrv.updateCatalogElement(x)),
-        // switchMap(() => this.tableSrv.getCatalogElements())
-    )
-    .subscribe(x => {
-      console.log(x);
-
-        // this.dataSource = x;
-        // this.markedElement = [];
-    });
+    this.openDialogRefEdit.afterClosed()
+      .subscribe(x => {
+        if (x) {
+          this.formGroup.controls.img.setValue(x);
+          this.data.element.img = x;
+        }
+      });
 }
 
   getFullThumbPath() {
@@ -67,8 +62,6 @@ export class ModalEditCatalogElementComponent implements OnInit {
   }
 
   onClickImg() {
-    console.log('click');
     this.onEdit();
-
   }
 }

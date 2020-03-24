@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import * as env from '../../../../environments/environment';
 
@@ -14,6 +14,7 @@ export class ImageService {
   ) { }
 
   getListImg(): Observable<string[]> {
+
     return this.http.get<string[]>(`${env.backEnd.address}/files/list`);
   }
 
@@ -27,5 +28,9 @@ export class ImageService {
 
   getFullImgPath(fileName: string): string {
     return `${env.backEnd.address}/files/img/${fileName}`;
+  }
+
+  sendFile(data: FormData): Observable<any> {
+    return this.http.post(`${env.backEnd.address}/files/`, data);
   }
 }

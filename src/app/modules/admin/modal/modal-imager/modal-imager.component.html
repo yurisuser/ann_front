@@ -1,7 +1,7 @@
 <div class="container">
     <div class="top-block">
         <div class="file" *ngIf="currentFile">
-            File: "{{data.fileName}}"
+            File: "{{currentFile}}"
         </div>
         <div class="empty"></div>
         <button mat-stroked-button color="primary" (click)="onUpload()"> Upload </button>
@@ -21,18 +21,40 @@
     <!-- upload -->
     <div *ngIf="status === 1">
         Upload:
-        <form method="post" enctype="multipart/form-data" class="upload-block">
+        <form method="post" enctype="multipart/form-data" class="upload-block" (ngSubmit)="onAcceptUpload($event)">
             <input type="file" name="avatar" (change)="onSelectImage($event)">
-            <img [src]="preview" *ngIf="preview" class="upload-preview">
             <br>
-            <button mat-stroked-button color="primary" (click)="onAcceptUpload()"> Save </button>
+            <div class="upload-canvas">
+                <img [src]="preview" *ngIf="preview" class="upload-preview">
+            </div>
+            <br>
+            <button mat-stroked-button color="primary" type="submit" [disabled]="isUploaded">
+                <ng-container *ngIf="isUploaded; else uploadTemplate">
+                    Already upload
+                </ng-container>
+                <ng-template #uploadTemplate>
+                    Upload
+                </ng-template>
+
+            </button>
         </form>
     </div>
     <!-- select -->
     <div *ngIf="status === 2">
-        2
+        <div class="select-canvas" *ngIf="imageList">
+            <div *ngFor="let item of imageList">
+                <div class="imgFrame">
+                    <img [src]="getThumbPath(item)">
+                    <span>{{ item }}</span>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <br>
+    <div class="err" *ngIf="errMsg">
+        Error: {{errMsg}}
+    </div>
     <br>
     <div class="buttons">
         <button mat-stroked-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!currentFile">Accept</button>

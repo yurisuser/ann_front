@@ -55,3 +55,37 @@ img {
     background-color: gray;
     border: darkgrey 1px solid;
 }
+
+.err {
+    color: red;
+}
+
+.upload-canvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    min-width: 400px;
+    min-height: 400px;
+    padding: 5px;
+}
+
+.select-canvas {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid gray;
+    min-width: 400px;
+    min-height: 400px;
+    max-width: 80%;
+    max-height: 800px;
+    padding: 5px;
+}
+
+.imgFrame {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    margin: 5px;
+}
