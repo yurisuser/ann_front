@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="content">
+    <div class="content" *ngIf="catalogTypes">
         Submenu elements edit
         <br>
         <br>
@@ -24,7 +24,7 @@
 
                 <ng-container matColumnDef="catalogType">
                     <mat-header-cell *matHeaderCellDef> catalogType </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.catalogType}} </mat-cell>
+                    <mat-cell *matCellDef="let element"> {{getCatalogViewName(element.catalogType)}} </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="order">

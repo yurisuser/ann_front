@@ -1,5 +1,5 @@
 <h2  mat-dialog-title>{{ data.text }}</h2>
-<form class="container" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+<form class="container" [formGroup]="formGroup">
         <mat-form-field>
             <input matInput placeholder="id" formControlName="id" readonly>
         </mat-form-field>
@@ -14,7 +14,7 @@
             <input matInput placeholder="order" formControlName="order">
         </mat-form-field>
         <div>
-            <button mat-stroked-button color="primary" type="submit" [disabled]="!formGroup.valid">Accept</button>
+            <button mat-stroked-button color="primary" (click)="onSubmit()" [disabled]="!formGroup.valid">Accept</button>
             <button mat-stroked-button color="primary" (click)="onClose()">Close</button>
         </div>
     </form>

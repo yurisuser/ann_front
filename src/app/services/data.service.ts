@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import * as env from '../../environments/environment';
-import { ICatalogType } from '../models/catalogType';
+import { ICatalogTypes } from '../modules/admin/models/catalogTypes';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class DataService {
     private http: HttpClient,
   ) { }
 
-  getCatalogSubMenu(): Observable<ICatalogType[]> {
-    return this.http.get<ICatalogType[]>(`${env.backEnd.address}/catalog/types`);
+  getCatalogSubMenu(): Observable<ICatalogTypes[]> {
+    return this.http.get<ICatalogTypes[]>(`${env.backEnd.address}/catalog/types`);
   }
 }

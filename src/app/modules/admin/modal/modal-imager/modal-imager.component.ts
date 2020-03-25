@@ -22,6 +22,7 @@ export class ModalImagerComponent implements OnInit {
   preview: string;
   errMsg: string;
   isUploaded: boolean;
+  selectedImgSelect: string;
 
   constructor(
     private imgSrv: ImageService,
@@ -41,6 +42,7 @@ export class ModalImagerComponent implements OnInit {
     this.isUploaded = false;
     this.currentFile = '';
     this.preview = '';
+    this.selectedImgSelect = '';
   }
 
   onClose() {
@@ -48,7 +50,7 @@ export class ModalImagerComponent implements OnInit {
   }
 
   onSubmit() {
-    this.dialogRef.close(this.currentFile);
+    this.dialogRef.close(this.currentFile || this.selectedImgSelect);
   }
 
   getImgPath() {
@@ -62,7 +64,6 @@ export class ModalImagerComponent implements OnInit {
   onUpload() {
     this.initFlags();
     this.status = EStatus.upload;
-    console.log('upload');
   }
 
   onSelect() {
@@ -70,7 +71,6 @@ export class ModalImagerComponent implements OnInit {
     this.status = EStatus.select;
     this.imgSrv.getListImg()
       .subscribe(x => this.imageList = x);
-    console.log('select', this.imageList);
   }
 
   onAcceptUpload(evt) {
@@ -94,6 +94,7 @@ export class ModalImagerComponent implements OnInit {
   }
 
   onSelectImage(evt) {
+    this.initFlags();
     // console.log(evt.target.files[0]);
     if (evt.target.files && evt.target.files[0]) {
       const reader = new FileReader();
@@ -102,7 +103,14 @@ export class ModalImagerComponent implements OnInit {
       };
       reader.readAsDataURL(evt.target.files[0]);
     }
+  }
 
+  onClickSelectCard(item) {
+    if (this.selectedImgSelect === item) {
+      this.selectedImgSelect = '';
+      return;
+    }
+    this.selectedImgSelect = item;
   }
 
 }

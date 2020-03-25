@@ -5,6 +5,8 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { ICatalogElement } from '../../models/catalogElements';
 import { ImageService } from '../../services/image.service';
 import { ModalImagerComponent } from '../modal-imager/modal-imager.component';
+import { ICatalogTypes } from '../../models/catalogTypes';
+import { TableService } from '../../services/table.service';
 
 @Component({
   selector: 'app-modal-edit-catalog-element',
@@ -23,10 +25,12 @@ export class ModalEditCatalogElementComponent implements OnInit {
   });
   private openDialogRefEdit;
   isExistImage: boolean;
+  catalogTypes: ICatalogTypes[];
 
   constructor(
     public dialog: MatDialog,
     private imgSrv: ImageService,
+    private tableSrv: TableService,
     public dialogRef: MatDialogRef<ModalEditCatalogElementComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {
       element: ICatalogElement,
@@ -34,7 +38,10 @@ export class ModalEditCatalogElementComponent implements OnInit {
     }
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.tableSrv.getCatalogTypes()
+      .subscribe(x => this.catalogTypes = x);
+  }
 
   onClose() {
     this.dialogRef.close();

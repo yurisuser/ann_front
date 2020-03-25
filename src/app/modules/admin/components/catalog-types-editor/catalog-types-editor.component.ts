@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { switchMap, tap, map } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 import { ICatalogTypes } from '../../models/catalogTypes';
 import { TableService } from '../../services/table.service';
@@ -18,6 +19,7 @@ export class CatalogTypesEditorComponent implements OnInit {
     public displayedColumns = ['id', 'name', 'viewName', 'order', 'check'];
     public markedElement = [];
     private dialogRefEdit;
+    catalogTypes: ICatalogTypes[];
 
     constructor(
         private tableSrv: TableService,
@@ -46,7 +48,7 @@ export class CatalogTypesEditorComponent implements OnInit {
             }
         });
         this.dialogRefEdit.afterClosed().pipe(
-            switchMap(x => this.tableSrv.updateCatalogType(x)),
+            switchMap(x => x ? this.tableSrv.updateCatalogType(x) : of(x)),
             switchMap(() => this.tableSrv.getCatalogTypes())
         )
         .subscribe(x => {
@@ -65,7 +67,7 @@ export class CatalogTypesEditorComponent implements OnInit {
             }
         });
         this.dialogRefEdit.afterClosed().pipe(
-            switchMap(x => this.tableSrv.createCatalogtype(x)),
+            switchMap(x => x ? this.tableSrv.createCatalogtype(x) : of(x)),
             switchMap(() => this.tableSrv.getCatalogTypes())
         )
         .subscribe(x => {

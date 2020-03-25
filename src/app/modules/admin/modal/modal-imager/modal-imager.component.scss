@@ -76,7 +76,7 @@ img {
     justify-content: flex-start;
     align-items: flex-start;
     border: 1px solid gray;
-    min-width: 400px;
+    min-width: 100%;
     min-height: 400px;
     max-width: 80%;
     max-height: 800px;
@@ -86,6 +86,31 @@ img {
 .imgFrame {
     display: flex;
     flex-direction: column;
-    border: 1px solid gray;
+    justify-content: space-between;
     margin: 5px;
+    height: 120px;
+    width: 100px;
+    box-shadow: 2px 2px 4px black;
+    cursor: pointer;
+    .img-placer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: inherit;
+        flex: 1 1 auto;
+        img {
+            height: auto;
+            width: auto;
+            max-width: 100px;
+            max-height: 100px;
+        }
+    }
+    .select-file-name {
+        font-weight: bold;
+        font-size: .8em;
+    }
+}
+
+.selected {
+    background-color: rgb(182, 228, 231);
 }

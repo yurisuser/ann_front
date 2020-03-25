@@ -42,10 +42,12 @@
     <!-- select -->
     <div *ngIf="status === 2">
         <div class="select-canvas" *ngIf="imageList">
-            <div *ngFor="let item of imageList">
-                <div class="imgFrame">
-                    <img [src]="getThumbPath(item)">
-                    <span>{{ item }}</span>
+            <div *ngFor="let item of imageList" (click)="onClickSelectCard(item)" >
+                <div class="imgFrame" [class.selected] = "selectedImgSelect === item">
+                    <div class="img-placer">
+                        <img [src]="getThumbPath(item)">
+                    </div>
+                    <span class="select-file-name">{{ item }}</span>
                 </div>
             </div>
         </div>
@@ -57,7 +59,7 @@
     </div>
     <br>
     <div class="buttons">
-        <button mat-stroked-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!currentFile">Accept</button>
+        <button mat-stroked-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!(currentFile || selectedImgSelect)">Accept</button>
         <button mat-stroked-button color="primary" (click)="onClose()">Close</button>
     </div>
 </div>

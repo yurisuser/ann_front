@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import * as env from '../../../../environments/environment';
-import { ICatalogElement } from '../models/catalogElements';
 
 @Injectable({
   providedIn: 'root'
@@ -47,8 +46,6 @@ export class TableService {
   }
 
   deleteCatalogType(id) {
-    console.log(id);
-
     const data = {
       headers: new HttpHeaders({'Content-Type': 'application/json'}),
       body: {id}
