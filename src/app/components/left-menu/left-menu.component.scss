@@ -10,7 +10,6 @@
     display: flex;
     width: fit-content;
     height: 30px;
-    // height: 3em;
     margin: .5em 1em;
     padding: 4px;
     box-shadow: rgb(53, 53, 53) -3px 3px 5px;
@@ -36,14 +35,32 @@
     // margin: 0 1em;
 }
 
-.active {
+.activeM {
     background-color: #4fd0fc;
+}
+.activeSubM {
+    box-shadow: 2px 2px 5px rgb(255, 145, 0)!important;
+    background-color: rgb(238, 251, 252);
+}
+
+.sub {
+    width: 100%;
+}
+
+.textSub {
+    width: 7em;
+    padding: 3px;
+    user-select: none;
 }
 
 .link-sub {
+    display: flex;
+    width: calc(100% - 4em);
     cursor: pointer;
     font-family: "Century";
     font-size: .8em;
-    width: 7em;
     margin: 0 0 10px 2em;
+    border: rgb(216, 216, 216) 1px solid;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px rgb(2, 0, 99);
 }

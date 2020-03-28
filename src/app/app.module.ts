@@ -21,10 +21,6 @@ import { GaleryComponent } from './components/galery/galery.component';
 import { SeasonComponent } from './components/season/season.component';
 import { IdeaComponent } from './components/idea/idea.component';
 import { CallbackComponent } from './components/callback/callback.component';
-import { PolygraphyComponent } from './components/polygraphy/polygraphy.component';
-import { LargePrintComponent } from './components/large-print/large-print.component';
-import { SuvenirkaComponent } from './components/suvenirka/suvenirka.component';
-import { NaruzhkaComponent } from './components/naruzhka/naruzhka.component';
 
 @NgModule({
   declarations: [
@@ -39,10 +35,6 @@ import { NaruzhkaComponent } from './components/naruzhka/naruzhka.component';
     SeasonComponent,
     IdeaComponent,
     CallbackComponent,
-    PolygraphyComponent,
-    LargePrintComponent,
-    SuvenirkaComponent,
-    NaruzhkaComponent,
   ],
   imports: [
     BrowserModule,

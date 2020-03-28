@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import * as env from '../../environments/environment';
 import { ICatalogTypes } from '../modules/admin/models/catalogTypes';
+import { ICatalogElement } from '../modules/admin/models/catalogElements';
 
 
 @Injectable({
@@ -17,5 +18,13 @@ export class DataService {
 
   getCatalogSubMenu(): Observable<ICatalogTypes[]> {
     return this.http.get<ICatalogTypes[]>(`${env.backEnd.address}/catalog/types`);
+  }
+
+  getCatalogElements() {
+    return this.http.get<ICatalogElement[]>(`${env.backEnd.address}/catalog/elements`);
+  }
+
+  getFullImgPath(img: string) {
+    return `${env.backEnd.address}/files/img/${img}`
   }
 }

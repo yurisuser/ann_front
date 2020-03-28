@@ -1,1 +1,8 @@
-<p>catalog works!</p>
+<div *ngIf="catalogElementsArr" class="container">
+    <div *ngFor="let item of catalogElementsArr">
+        <div class="card">
+            <img [src]="getFullImgPath(item.img)" alt="">
+        </div>
+    </div>
+
+</div>

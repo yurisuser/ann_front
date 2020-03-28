@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    height: fit-content;
+}
+
+.card {
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border: 1px solid gray;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 10px;
+    img {
+        max-height: 80%;
+        max-width: 80%;
+        height: auto;
+        width: auto;
+        margin: 10px;
+    }
+}
+
+

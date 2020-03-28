@@ -23,8 +23,7 @@ export class LeftMenuComponent implements OnInit {
   constructor(
     private router: Router,
     private dataSrv: DataService,
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.router.events.subscribe(x => {
@@ -32,13 +31,12 @@ export class LeftMenuComponent implements OnInit {
     });
     this.dataSrv.getCatalogSubMenu()
       .pipe(
-        map(x => x.sort((a, b) => a.order >= b.order ? 1 : -1))
+        map(x => x.sort((a, b) => a.order >= b.order ? 1 : -1)),
       )
       .subscribe( x => this.catalogSubMenu = x );
-
   }
 
-  onClick(str) {
-    console.log(this.menu);
+  isActiveRoute(params: any[]): boolean {
+    return this.router.isActive(this.router.createUrlTree(params), false);
   }
 }

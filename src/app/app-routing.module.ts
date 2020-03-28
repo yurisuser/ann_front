@@ -8,10 +8,6 @@ import { GaleryComponent } from './components/galery/galery.component';
 import { SeasonComponent } from './components/season/season.component';
 import { IdeaComponent } from './components/idea/idea.component';
 import { CallbackComponent } from './components/callback/callback.component';
-import { PolygraphyComponent } from './components/polygraphy/polygraphy.component';
-import { LargePrintComponent } from './components/large-print/large-print.component';
-import { SuvenirkaComponent } from './components/suvenirka/suvenirka.component';
-import { NaruzhkaComponent } from './components/naruzhka/naruzhka.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -20,11 +16,8 @@ const routes: Routes = [
   { path: 'main', component: MainComponent,
     children: [
       { path: '', component: CatalogComponent },
-      { path: 'catalog', component: CatalogComponent },
-      { path: 'catalog/polygraphy', component: PolygraphyComponent },
-      { path: 'catalog/largeprint', component: LargePrintComponent },
-      { path: 'catalog/suvenirka', component: SuvenirkaComponent },
-      { path: 'catalog/naruzhka', component: NaruzhkaComponent },
+      { path: 'catalog', component: CatalogComponent},
+      { path: 'catalog/:type', component: CatalogComponent},
       { path: 'galery', component: GaleryComponent },
       { path: 'season', component: SeasonComponent },
       { path: 'idea', component: IdeaComponent },
