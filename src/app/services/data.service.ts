@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import * as env from '../../environments/environment';
 import { ICatalogTypes } from '../models/catalogTypes';
 import { ICatalogElement } from '../models/catalogElements';
+import { IGaleryTypes } from '../models/galeryTypes';
+import { IGaleryElement } from '../models/galeryElements';
 
 
 @Injectable({
@@ -20,11 +22,19 @@ export class DataService {
     return this.http.get<ICatalogTypes[]>(`${env.backEnd.address}/catalog/types`);
   }
 
-  getCatalogElements() {
+  getCatalogElements(): Observable<ICatalogElement[]> {
     return this.http.get<ICatalogElement[]>(`${env.backEnd.address}/catalog/elements`);
   }
 
-  getFullImgPath(img: string) {
-    return `${env.backEnd.address}/files/img/${img}`
+  getGallerySubMenu(): Observable<ICatalogTypes[]> {
+    return this.http.get<IGaleryTypes[]>(`${env.backEnd.address}/galery/types`);
+  }
+
+  getGalleryElements(): Observable<IGaleryElement[]> {
+    return this.http.get<IGaleryElement[]>(`${env.backEnd.address}/galery/elements`);
+  }
+
+  getFullImgPath(img: string): string {
+    return `${env.backEnd.address}/files/img/${img}`;
   }
 }

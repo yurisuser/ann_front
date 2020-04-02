@@ -11,14 +11,15 @@ import { map } from 'rxjs/operators';
 })
 export class LeftMenuComponent implements OnInit {
   public readonly menu = [
-    { name: 'Каталог продукции', param: '/main/catalog' },
-    { name: 'Галерея макетов', param: '/main/galery' },
+    { name: 'Каталог продукции', param: '/main/catalog', sub: 'catalog' },
+    { name: 'Галерея макетов', param: '/main/galery', sub: 'galery' },
     { name: 'Сезонные товары', param: '/main/season' },
     { name: 'Оригинальные изделия', param: '/main/idea' },
     { name: 'Отзывы / предложения', param: '/main/callback' },
   ];
   public currentRoute;
   public catalogSubMenu;
+  public galerySubMenu;
 
   constructor(
     private router: Router,
@@ -34,6 +35,11 @@ export class LeftMenuComponent implements OnInit {
         map(x => x.sort((a, b) => a.order >= b.order ? 1 : -1)),
       )
       .subscribe( x => this.catalogSubMenu = x );
+    this.dataSrv.getGallerySubMenu()
+      .pipe(
+        map(x => x.sort((a, b) => a.order >= b.order ? 1 : -1)),
+      )
+      .subscribe( x => this.galerySubMenu = x );
   }
 
   isActiveRoute(params: any[]): boolean {

@@ -19,6 +19,7 @@ const routes: Routes = [
       { path: 'catalog', component: CatalogComponent},
       { path: 'catalog/:type', component: CatalogComponent},
       { path: 'galery', component: GaleryComponent },
+      { path: 'galery/:type', component: GaleryComponent },
       { path: 'season', component: SeasonComponent },
       { path: 'idea', component: IdeaComponent },
       { path: 'callback', component: CallbackComponent },

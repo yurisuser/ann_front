@@ -2,6 +2,12 @@
     <div *ngFor="let item of catalogElementsArr">
         <div class="card">
             <img [src]="getFullImgPath(item.img)" alt="">
+            <div class="down">
+                <div class="name">
+                    {{ item.viewName }}
+                </div>
+                <div class="arrow"></div>
+            </div>
         </div>
     </div>
 

@@ -9,12 +9,23 @@
             <div class="line"></div>
             <img src="../../../assets/pic/arrow_right_white_18dp.png" alt="">
         </div>
-        <div *ngIf="i <= 1 && isActiveRoute([item.param])" class="sub">
-            <div *ngFor="let el of catalogSubMenu" [routerLink]="[item.param, el.id]" class="link-sub" routerLinkActive = "activeSubM">
-                <div class="textSub">
-                    {{ el.viewName }}
+        <div *ngIf="item.sub && isActiveRoute([item.param])" class="sub">
+            <ng-container *ngIf="item.sub === 'catalog'">
+                <div *ngFor="let el of catalogSubMenu" [routerLink]="[item.param, el.id]" class="link-sub" routerLinkActive = "activeSubM">
+                    <div class="textSub">
+                        {{ el.viewName }}
+                    </div>
                 </div>
-            </div>
+
+            </ng-container>
+            <ng-container *ngIf="item.sub === 'galery'">
+                <div *ngFor="let el of galerySubMenu" [routerLink]="[item.param, el.id]" class="link-sub" routerLinkActive = "activeSubM">
+                    <div class="textSub">
+                        {{ el.viewName }}
+                    </div>
+                </div>
+
+            </ng-container>
         </div>
     </div>
 </div>
