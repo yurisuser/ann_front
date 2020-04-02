@@ -21,6 +21,14 @@ export class TableService {
     return this.http.get(`${env.backEnd.address}/catalog/elements`);
   }
 
+  getGaleryTypes(): Observable<any> {
+    return this.http.get(`${env.backEnd.address}/galery/types`);
+  }
+
+  getGaleryElements(): Observable<any> {
+    return this.http.get(`${env.backEnd.address}/galery/elements`);
+  }
+
   updateCatalogType(type): Observable<any> {
     return this.http.post(`${env.backEnd.address}/catalog/type`, type);
   }
@@ -29,12 +37,28 @@ export class TableService {
     return this.http.post(`${env.backEnd.address}/catalog/element`, type);
   }
 
+  updateGaleryType(type): Observable<any> {
+    return this.http.post(`${env.backEnd.address}/galery/type`, type);
+  }
+
+  updateGaleryElement(type): Observable<any> {
+    return this.http.post(`${env.backEnd.address}/galery/element`, type);
+  }
+
   createCatalogtype(type): Observable<any> {
     return this.http.put(`${env.backEnd.address}/catalog/type`, type);
   }
 
   createCatalogElement(element): Observable<any> {
     return this.http.put(`${env.backEnd.address}/catalog/element`, element);
+  }
+
+  createGaleryType(type): Observable<any> {
+    return this.http.put(`${env.backEnd.address}/galery/type`, type);
+  }
+
+  createGaleryElement(element): Observable<any> {
+    return this.http.put(`${env.backEnd.address}/galery/element`, element);
   }
 
   deleteCatalogElement(id) {
@@ -51,5 +75,21 @@ export class TableService {
       body: {id}
     };
     return this.http.delete(`${env.backEnd.address}/catalog/type`, data);
+  }
+
+  deleteGaleryElement(id) {
+    const data = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      body: {id}
+    };
+    return this.http.delete(`${env.backEnd.address}/galery/element`, data);
+  }
+
+  deleteGaleryType(id) {
+    const data = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      body: {id}
+    };
+    return this.http.delete(`${env.backEnd.address}/galery/type`, data);
   }
 }

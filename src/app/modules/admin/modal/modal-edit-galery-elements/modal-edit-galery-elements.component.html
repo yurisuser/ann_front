@@ -1,0 +1,38 @@
+<h2  mat-dialog-title>{{ data.text }}</h2>
+<form class="container" [formGroup]="formGroup">
+        <mat-form-field>
+            <input matInput placeholder="id" formControlName="id" readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="viewName" formControlName="viewName">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput formControlName="img" hidden>
+            <ng-container *ngIf="formGroup.controls.img.value; else elseTemplate">
+                <img src="{{getFullThumbPath()}}" alt="" (click)="onClickImg()">
+            </ng-container>
+            <ng-template #elseTemplate>
+                <span class="cursor" (click)="onClickImg()">Click for image!</span>
+            </ng-template>
+        </mat-form-field>
+
+        <mat-form-field>
+            <!-- <input type="number" matInput placeholder="catalogType" formControlName="catalogType"> -->
+            <mat-label>Galery type</mat-label>
+            <mat-select formControlName="galeryType">
+                <mat-option *ngFor="let element of galeryTypes" [value]="element.id">
+                    {{element.viewName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="number" matInput placeholder="order" formControlName="order">
+        </mat-form-field>
+        <div>
+            <button mat-stroked-button color="primary" (click)="onSubmit()" [disabled]="!formGroup.valid">Accept</button>
+            <button mat-stroked-button color="primary" (click)="onClose()">Close</button>
+        </div>
+    </form>

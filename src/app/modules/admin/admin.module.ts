@@ -25,6 +25,10 @@ import { CatalogElementsEditorComponent } from './components/catalog-elements-ed
 import { ModalEditCatalogElementComponent } from './modal/modal-edit-catalog-element/modal-edit-catalog-element.component';
 import { ImagerComponent } from './components/imager/imager.component';
 import { ModalImagerComponent } from './modal/modal-imager/modal-imager.component';
+import { GaleryTypesEditorComponent } from './components/galery-types-editor/galery-types-editor.component';
+import { GaleryElementsEditorComponent } from './components/galery-elements-editor/galery-elements-editor.component';
+import { ModalEditGaleryTypesComponent } from './modal/modal-edit-galery-types/modal-edit-galery-types.component';
+import { ModalEditGaleryElementsComponent } from './modal/modal-edit-galery-elements/modal-edit-galery-elements.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,10 @@ import { ModalImagerComponent } from './modal/modal-imager/modal-imager.componen
     ModalEditCatalogElementComponent,
     ImagerComponent,
     ModalImagerComponent,
+    GaleryTypesEditorComponent,
+    GaleryElementsEditorComponent,
+    ModalEditGaleryTypesComponent,
+    ModalEditGaleryElementsComponent,
   ],
   imports: [
     CommonModule,
@@ -63,6 +71,8 @@ import { ModalImagerComponent } from './modal/modal-imager/modal-imager.componen
     ModalEditCatalogTypeComponent,
     ModalEditCatalogElementComponent,
     ModalImagerComponent,
+    ModalEditGaleryTypesComponent,
+    ModalEditGaleryElementsComponent,
     ConfirmComponent
   ],
   providers: [

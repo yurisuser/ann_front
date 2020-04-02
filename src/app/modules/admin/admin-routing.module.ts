@@ -7,6 +7,8 @@ import { TableEditorComponent } from './components/table-editor/table-editor.com
 import { CatalogTypesEditorComponent } from './components/catalog-types-editor/catalog-types-editor.component';
 import { CatalogElementsEditorComponent } from './components/catalog-elements-editor/catalog-elements-editor.component';
 import { ImagerComponent } from './components/imager/imager.component';
+import { GaleryTypesEditorComponent } from './components/galery-types-editor/galery-types-editor.component';
+import { GaleryElementsEditorComponent } from './components/galery-elements-editor/galery-elements-editor.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent,
@@ -15,8 +17,10 @@ const routes: Routes = [
       {path: 'imager', component: ImagerComponent},
       {path: 'tableeditor', component: TableEditorComponent,
         children: [
-          {path: 'types', component: CatalogTypesEditorComponent},
-          {path: 'elements', component: CatalogElementsEditorComponent},
+          {path: 'catalogtypes', component: CatalogTypesEditorComponent},
+          {path: 'catalogelements', component: CatalogElementsEditorComponent},
+          {path: 'galerytypes', component: GaleryTypesEditorComponent},
+          {path: 'galeryelements', component: GaleryElementsEditorComponent},
           {path: '**', component: CatalogElementsEditorComponent},
         ]
       },
