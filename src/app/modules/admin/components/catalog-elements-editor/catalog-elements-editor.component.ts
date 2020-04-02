@@ -4,10 +4,10 @@ import { switchMap, tap } from 'rxjs/operators';
 
 import { TableService } from '../../services/table.service';
 import { DialogService } from '../../services/dialog.service';
-import { ICatalogElement } from '../../models/catalogElements';
+import { ICatalogElement } from '../../../../models/catalogElements';
 import { ModalEditCatalogElementComponent } from '../../modal/modal-edit-catalog-element/modal-edit-catalog-element.component';
 import { ImageService } from '../../services/image.service';
-import { ICatalogTypes } from '../../models/catalogTypes';
+import { ICatalogTypes } from '../../../../models/catalogTypes';
 import { of } from 'rxjs';
 
 @Component({

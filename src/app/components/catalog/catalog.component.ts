@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 
 import { DataService } from '../../services/data.service';
-import { ICatalogElement } from '../../modules/admin/models/catalogElements';
+import { ICatalogElement } from '../../models/catalogElements';
 
 @Component({
   selector: 'app-catalog',

@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { ICatalogTypes } from '../../models/catalogTypes';
+import { ICatalogTypes } from '../../../../models/catalogTypes';
 
 @Component({
   selector: 'app-modal-edit-catalog-type',

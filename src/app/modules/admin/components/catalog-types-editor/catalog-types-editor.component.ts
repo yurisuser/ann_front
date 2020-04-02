@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material';
 import { switchMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { ICatalogTypes } from '../../models/catalogTypes';
+import { ICatalogTypes } from '../../../../models/catalogTypes';
 import { TableService } from '../../services/table.service';
 import { DialogService } from '../../services/dialog.service';
 import { ModalEditCatalogTypeComponent } from '../../modal/modal-edit-catalog-type/modal-edit-catalog-type.component';

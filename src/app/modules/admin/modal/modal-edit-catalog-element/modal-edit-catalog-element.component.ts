@@ -2,10 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 
-import { ICatalogElement } from '../../models/catalogElements';
+import { ICatalogElement } from '../../../../models/catalogElements';
 import { ImageService } from '../../services/image.service';
 import { ModalImagerComponent } from '../modal-imager/modal-imager.component';
-import { ICatalogTypes } from '../../models/catalogTypes';
+import { ICatalogTypes } from '../../../../models/catalogTypes';
 import { TableService } from '../../services/table.service';
 
 @Component({
