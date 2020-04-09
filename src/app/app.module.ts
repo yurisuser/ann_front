@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -21,6 +21,9 @@ import { GaleryComponent } from './components/galery/galery.component';
 import { SeasonComponent } from './components/season/season.component';
 import { IdeaComponent } from './components/idea/idea.component';
 import { CallbackComponent } from './components/callback/callback.component';
+import { TokenInterceptor } from './interceptors/token-interceptor';
+import { AuthService } from './services/auth.service';
+import { HeaderInterceptor } from './interceptors/header-interceptor';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,11 @@ import { CallbackComponent } from './components/callback/callback.component';
     MatFormFieldModule,
     MatButtonModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
