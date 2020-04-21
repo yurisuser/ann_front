@@ -8,14 +8,15 @@ import { GaleryComponent } from './components/galery/galery.component';
 import { SeasonComponent } from './components/season/season.component';
 import { IdeaComponent } from './components/idea/idea.component';
 import { CallbackComponent } from './components/callback/callback.component';
+import { HelloPageComponent } from './components/hello-page/hello-page.component';
 
 const routes: Routes = [
-  { path: '', component: MainComponent },
+  { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'auth', component: AuthComponent },
   { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
   { path: 'main', component: MainComponent,
     children: [
-      { path: '', component: CatalogComponent },
+      { path: '', component: HelloPageComponent },
       { path: 'catalog', component: CatalogComponent},
       { path: 'catalog/:type', component: CatalogComponent},
       { path: 'galery', component: GaleryComponent },

@@ -24,6 +24,7 @@ import { CallbackComponent } from './components/callback/callback.component';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { AuthService } from './services/auth.service';
 import { HeaderInterceptor } from './interceptors/header-interceptor';
+import { HelloPageComponent } from './components/hello-page/hello-page.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HeaderInterceptor } from './interceptors/header-interceptor';
     SeasonComponent,
     IdeaComponent,
     CallbackComponent,
+    HelloPageComponent,
   ],
   imports: [
     BrowserModule,

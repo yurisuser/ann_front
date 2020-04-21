@@ -1,4 +1,20 @@
 .content {
     display: flex;
     flex-flow: row nowrap;
+    // width: 1000px;
+    border: 1px solid rgb(190, 224, 135);
+}
+.router {
+    display: flex;
+    // align-self: stretch;
+    flex: 1 1 auto;
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-flow: column wrap;
+    }
+    app-left-menu {
+        display: none;
+    }
 }

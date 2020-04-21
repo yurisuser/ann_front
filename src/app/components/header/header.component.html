@@ -4,11 +4,6 @@
         Memmi | Design&Print Service
     </div>
     <div class="empty"></div>
-    <div class="contacts">
-        <div class="phone">+38 096 261 57 87</div>
-        <div class="phone">+38 099 335 09 16</div>
-        <div class="email">ann.memmi@gmail.com</div>
-    </div>
     <div class="right-orange">
         <div *ngIf="authState$ | async as authState; else login" (click)="logout()">
             <div class="icon-block">
