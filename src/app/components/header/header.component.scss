@@ -91,8 +91,42 @@
     }
 }
 
-@media (max-width: 768px) {
+.burger {
+    display: none;
+    position: relative;
+    z-index: 30;
+    mat-icon{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        cursor: pointer;
+    }
+}
 
+
+mat-menu {
+    background-color: burlywood;
+}
+
+@media (max-width: 768px) {
+    .menu-text {
+        color: #071849;
+    }
+    .right-orange {
+        display: none!important;
+    }
+    .head-text {
+        font-size: 1.2em!important;
+    }
+    .burger {
+        display: flex;
+    }
+    .icon-block{
+        img {
+            display: none;
+        }
+     }
 }
 
 

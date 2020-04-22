@@ -5,17 +5,32 @@
     </div>
     <div class="empty"></div>
     <div class="right-orange">
-        <div *ngIf="authState$ | async as authState; else login" (click)="logout()">
-            <div class="icon-block">
-                <img src="../../../assets/pic/head/kabinet_icon.png" alt="">
-                <span (click)="logout()">Выйти</span>
-            </div>
-        </div>
-        <ng-template #login>
-            <div class="icon-block" routerLink="auth">
-                <img src="../../../assets/pic/head/login-icon.png" alt="">
-                <span>Войти</span>
-            </div>
-        </ng-template>
+        <ng-content *ngTemplateOutlet="loginBlock"></ng-content>
+    </div>
+    <div class="burger" >
+        <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <div mat-menu-item>
+            <ng-content *ngTemplateOutlet="loginBlock"></ng-content>
+
+          </div>
+        </mat-menu>
     </div>
 </div>
+
+<ng-template #loginBlock>
+    <div *ngIf="authState$ | async as authState; else login" (click)="logout()">
+        <div class="icon-block">
+            <img src="../../../assets/pic/head/kabinet_icon.png" alt="">
+            <span (click)="logout()" class="menu-text">Выйти</span>
+        </div>
+    </div>
+    <ng-template #login>
+        <div class="icon-block" routerLink="auth">
+            <img src="../../../assets/pic/head/login-icon.png" alt="">
+            <span class="menu-text">Войти</span>
+        </div>
+    </ng-template>
+</ng-template>

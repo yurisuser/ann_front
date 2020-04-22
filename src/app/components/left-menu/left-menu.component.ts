@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./left-menu.component.scss']
 })
 export class LeftMenuComponent implements OnInit {
-  public readonly menu = [
+  public readonly mainMenu = [
     { name: 'Каталог продукции', param: '/main/catalog', sub: 'catalog' },
     { name: 'Галерея макетов', param: '/main/galery', sub: 'galery' },
     { name: 'Сезонные товары', param: '/main/season' },
@@ -20,6 +20,7 @@ export class LeftMenuComponent implements OnInit {
   public currentRoute;
   public catalogSubMenu;
   public galerySubMenu;
+  public isShowMenu = false;
 
   constructor(
     private router: Router,

@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -52,6 +54,8 @@ import { HelloPageComponent } from './components/hello-page/hello-page.component
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatSidenavModule,
+    MatMenuModule,
   ],
   providers: [
     AuthService,

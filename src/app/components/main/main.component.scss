@@ -1,20 +1,24 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+}
+
 .content {
     display: flex;
     flex-flow: row nowrap;
-    // width: 1000px;
-    border: 1px solid rgb(190, 224, 135);
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
 }
 .router {
     display: flex;
-    // align-self: stretch;
-    flex: 1 1 auto;
+    flex: 1 1 100%;
 }
 
 @media (max-width: 768px) {
     .content {
         flex-flow: column wrap;
-    }
-    app-left-menu {
-        display: none;
     }
 }

@@ -1,5 +1,5 @@
 <div class="container">
-    <div *ngFor="let item of menu; let i=index">
+    <div *ngFor="let item of mainMenu; let i=index">
         <div class="frame-string-menu"
         [routerLink] ="[item.param]"
         [class.activeM] = "isActiveRoute([item.param])">
@@ -24,8 +24,19 @@
                         {{ el.viewName }}
                     </div>
                 </div>
-
             </ng-container>
         </div>
     </div>
+</div>
+<div class="burger" >
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <div mat-menu-item *ngFor="let item of mainMenu">
+          <div [routerLink] ="[item.param]">
+              {{ item.name }}
+          </div>
+      </div>
+    </mat-menu>
 </div>
