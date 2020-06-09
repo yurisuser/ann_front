@@ -1,3 +1,7 @@
-<div class="content">
-    <p>galery works!</p>
+<div *ngIf="galeryShowArr" class="container">
+    <div *ngFor="let item of galeryShowArr" >
+        <div class="card">
+            <img [src]="getFullImgPath(item.img)" alt="">
+        </div>
+    </div>
 </div>

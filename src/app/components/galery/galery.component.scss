@@ -1,3 +1,23 @@
-.content {
-    width: 100%;
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    height: fit-content;
+}
+
+.card {
+    display: flex;
+    flex: 1 1 auto;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+        max-height: 200px;
+        max-width: 350px;
+        margin: 1px;
+    }
 }
