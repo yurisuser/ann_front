@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,7 @@ import { TokenInterceptor } from './interceptors/token-interceptor';
 import { AuthService } from './services/auth.service';
 import { HeaderInterceptor } from './interceptors/header-interceptor';
 import { HelloPageComponent } from './components/hello-page/hello-page.component';
+import { DynamicTableComponent } from './components/dynamicTable/dynamicTable.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { HelloPageComponent } from './components/hello-page/hello-page.component
     IdeaComponent,
     CallbackComponent,
     HelloPageComponent,
+    DynamicTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { HelloPageComponent } from './components/hello-page/hello-page.component
     MatButtonModule,
     MatSidenavModule,
     MatMenuModule,
+    MatTableModule
   ],
   providers: [
     AuthService,

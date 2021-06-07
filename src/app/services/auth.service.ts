@@ -150,6 +150,6 @@ export class AuthService {
         this.authState$.next(null);
         this.removeAccesToken();
         this.removeRefreshToken();
-        this.router.navigate(['auth']);
+        // this.router.navigate(['auth']);
     }
 }
