@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-flow: column;
+    height: fit-content;
+    width: fit-content;
+}
+
+mat-form-field {
+    font-size: .8em;
+}
+
+.cursor {
+    cursor: pointer;
+}

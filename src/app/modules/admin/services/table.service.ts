@@ -21,6 +21,10 @@ export class TableService {
     return this.http.get(`${env.backEnd.address}/catalog/elements`);
   }
 
+  getCatalogPages(): Observable<any> {
+    return this.http.get(`${env.backEnd.address}/catalog/page`);
+  }
+
   getGaleryTypes(): Observable<any> {
     return this.http.get(`${env.backEnd.address}/galery/types`);
   }
@@ -37,6 +41,10 @@ export class TableService {
     return this.http.post(`${env.backEnd.address}/catalog/element`, type);
   }
 
+  updateCatalogPage(page): Observable<any> {
+    return this.http.post(`${env.backEnd.address}/catalog/page`, page);
+  }
+
   updateGaleryType(type): Observable<any> {
     return this.http.post(`${env.backEnd.address}/galery/type`, type);
   }
@@ -51,6 +59,10 @@ export class TableService {
 
   createCatalogElement(element): Observable<any> {
     return this.http.put(`${env.backEnd.address}/catalog/element`, element);
+  }
+
+  createCatalogPage(page): Observable<any> {
+    return this.http.put(`${env.backEnd.address}/catalog/page`, page);
   }
 
   createGaleryType(type): Observable<any> {
@@ -75,6 +87,14 @@ export class TableService {
       body: {id}
     };
     return this.http.delete(`${env.backEnd.address}/catalog/type`, data);
+  }
+
+  deleteCatalogPage(id) {
+    const data = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      body: {id}
+    };
+    return this.http.delete(`${env.backEnd.address}/catalog/page`, data);
   }
 
   deleteGaleryElement(id) {

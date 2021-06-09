@@ -62,7 +62,7 @@ export class ModalEditCatalogElementComponent implements OnInit {
           this.data.element.img = x;
         }
       });
-}
+  }
 
   getFullThumbPath() {
     return this.imgSrv.getFullThumbPath(this.formGroup.controls.img.value);

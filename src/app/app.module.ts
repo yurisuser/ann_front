@@ -29,6 +29,7 @@ import { AuthService } from './services/auth.service';
 import { HeaderInterceptor } from './interceptors/header-interceptor';
 import { HelloPageComponent } from './components/hello-page/hello-page.component';
 import { DynamicTableComponent } from './components/dynamicTable/dynamicTable.component';
+import { CatalogElementPageComponent } from './components/catalog-element-page/catalog-element-page.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { DynamicTableComponent } from './components/dynamicTable/dynamicTable.co
     CallbackComponent,
     HelloPageComponent,
     DynamicTableComponent,
+    CatalogElementPageComponent,
   ],
   imports: [
     BrowserModule,

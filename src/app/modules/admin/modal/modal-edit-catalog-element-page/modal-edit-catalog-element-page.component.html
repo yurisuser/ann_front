@@ -5,7 +5,16 @@
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput placeholder="viewName" formControlName="viewName">
+        <mat-label>Catalog element</mat-label>
+        <mat-select formControlName="catalogElement">
+            <mat-option *ngFor="let element of catalogElements" [value]="element.id">
+                {{element.viewName}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="headText" formControlName="headText">
     </mat-form-field>
 
     <mat-form-field>
@@ -19,18 +28,22 @@
     </mat-form-field>
 
     <mat-form-field>
-        <!-- <input type="number" matInput placeholder="catalogType" formControlName="catalogType"> -->
-        <mat-label>Catalog type</mat-label>
-        <mat-select formControlName="catalogType">
-            <mat-option *ngFor="let element of catalogTypes" [value]="element.id">
-                {{element.viewName}}
-            </mat-option>
-        </mat-select>
+        <input matInput placeholder="paragraphText" formControlName="paragraphText">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>text</mat-label>
+        <textarea matInput placeholder="text" formControlName="text"></textarea>
     </mat-form-field>
 
     <mat-form-field>
-        <input type="number" matInput placeholder="order" formControlName="order">
+        <input matInput placeholder="spreadsheetId" formControlName="spreadsheetId">
     </mat-form-field>
+
+    <mat-form-field>
+        <input type="number" matInput placeholder="spreadSheetPageNum" formControlName="spreadSheetPageNum">
+    </mat-form-field>
+
     <div>
         <button mat-stroked-button color="primary" (click)="onSubmit()" [disabled]="!formGroup.valid">Accept</button>
         <button mat-stroked-button color="primary" (click)="onClose()">Close</button>

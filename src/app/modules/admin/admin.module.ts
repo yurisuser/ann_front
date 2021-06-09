@@ -29,6 +29,8 @@ import { GaleryTypesEditorComponent } from './components/galery-types-editor/gal
 import { GaleryElementsEditorComponent } from './components/galery-elements-editor/galery-elements-editor.component';
 import { ModalEditGaleryTypesComponent } from './modal/modal-edit-galery-types/modal-edit-galery-types.component';
 import { ModalEditGaleryElementsComponent } from './modal/modal-edit-galery-elements/modal-edit-galery-elements.component';
+import { CatalogPageEditorComponent } from './components/catalog-page-editor/catalog-page-editor.component';
+import { ModalEditCatalogElementPageComponent } from './modal/modal-edit-catalog-element-page/modal-edit-catalog-element-page.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { ModalEditGaleryElementsComponent } from './modal/modal-edit-galery-elem
     GaleryElementsEditorComponent,
     ModalEditGaleryTypesComponent,
     ModalEditGaleryElementsComponent,
+    CatalogPageEditorComponent,
+    ModalEditCatalogElementPageComponent,
   ],
   imports: [
     CommonModule,
@@ -73,6 +77,7 @@ import { ModalEditGaleryElementsComponent } from './modal/modal-edit-galery-elem
     ModalImagerComponent,
     ModalEditGaleryTypesComponent,
     ModalEditGaleryElementsComponent,
+    ModalEditCatalogElementPageComponent,
     ConfirmComponent
   ],
   providers: [
