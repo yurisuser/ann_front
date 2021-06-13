@@ -33,4 +33,12 @@ export class ImageService {
   sendFile(data: FormData): Observable<any> {
     return this.http.post(`${env.backEnd.address}/files/`, data);
   }
+
+  deleteImages(arr: string[]): Observable<any> {
+    const data = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      body: {names: arr}
+    };
+    return this.http.delete(`${env.backEnd.address}/files/`, data);
+  }
 }

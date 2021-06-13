@@ -1,7 +1,10 @@
 <div *ngIf="galeryShowArr" class="container">
     <div *ngFor="let item of galeryShowArr" >
         <div class="card">
-            <img [src]="getFullImgPath(item.img)" alt="">
+            <div class="imgBox">
+                <img [src]="getFullImgPath(item.img)" alt="">
+            </div>
+            <p>{{item.viewName}}</p>
         </div>
     </div>
 </div>

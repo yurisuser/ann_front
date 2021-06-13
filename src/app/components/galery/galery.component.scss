@@ -1,4 +1,5 @@
 .container {
+    padding-top: 1em;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -13,11 +14,27 @@
     position: relative;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     cursor: pointer;
+    padding: .5em;
+    border-radius: .5em;
+    // border: gray 1px solid;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin: 1em;
+    width: 250px;
+    height: 350px;
+
+    .imgBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 280px;
+        width: 200px;
+    }
 
     img {
-        max-height: 200px;
-        max-width: 350px;
-        margin: 1px;
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
     }
 }

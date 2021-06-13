@@ -1,4 +1,17 @@
-<p>Imager</p>
-<div *ngFor="let item of list">
-    <img src="{{item}}" alt="">
+<div class="container">
+    <p>Imager</p>
+    <div class="example-button-row">
+        <button mat-button color="primary">Select unused</button>
+        <button mat-button color="primary" (click)="revertSelected()">Revert selection</button>
+        <button mat-button color="primary" (click)="clearSelected()">Clear selection</button>
+        <button mat-button color="warn" (click)="deleteSelected()">Delete selected</button>
+    </div>
+    <div class="list">
+        <div *ngFor="let item of list; let i=index" class="card" (click)="onClick(i)" [class.selected]="isSelected(i)">
+            <img src="{{item.link}}" alt="">
+            <div>
+                {{item.name | slice:0:10}}...
+            </div>
+        </div>
+    </div>
 </div>

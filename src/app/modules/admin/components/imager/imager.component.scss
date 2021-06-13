@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: column;
+
+    p {
+        text-align: center;
+        font-weight: bold;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    width: 120px;
+    border: 1px solid gray;
+    margin: 5px;
+
+    img {
+        width: 95%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.selected {
+    background-color: red;
+}
+
+.example-button-row {
+    display: flex;
+    align-self: center;
+}
