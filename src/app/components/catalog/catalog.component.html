@@ -1,6 +1,6 @@
 <div *ngIf="catalogElementsArr" class="container">
     <div *ngFor="let item of catalogElementsArr">
-        <div class="card">
+        <div class="card" routerLink="/main/catalog/elementpage/{{item.id}}">
             <img [src]="getFullImgPath(item.img)" alt="">
             <div class="down">
                 <div class="name">

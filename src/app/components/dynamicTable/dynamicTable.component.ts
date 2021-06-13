@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TableService } from '../../services/table.service';
 
 @Component({
-  selector: 'app-table',
+  selector: 'app-dynamic-table',
   templateUrl: './dynamicTable.component.html',
   styleUrls: ['./dynamicTable.component.scss']
 })
 export class DynamicTableComponent implements OnInit {
+
+  @Input() spreadSheetId: string;
+  @Input() spreadSheetList: number;
   tableName: string;
   displayedColumns: string[] = [];
   dataSource;
@@ -16,14 +19,11 @@ export class DynamicTableComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tabSrv.getGoogleSpreadSheet('1RcqPesW1hDsTqc57iNDxzgMHXfLxxAPJYkz26wCQv3c', 2)
+    this.tabSrv.getGoogleSpreadSheet(this.spreadSheetId, this.spreadSheetList)
       .subscribe(x => {
         this.tableName = x.name;
-        console.log(x.name);
         this.displayedColumns = x.columns;
-        console.log(x.columns);
         this.dataSource = x.result;
-        console.log(x.result);
       });
   }
 }

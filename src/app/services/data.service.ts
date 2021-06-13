@@ -7,6 +7,7 @@ import { ICatalogTypes } from '../models/catalogTypes';
 import { ICatalogElement } from '../models/catalogElements';
 import { IGaleryTypes } from '../models/galeryTypes';
 import { IGaleryElement } from '../models/galeryElements';
+import { ICatalogElementsPages } from '../models/catalogElementsPages';
 
 
 @Injectable({
@@ -24,6 +25,10 @@ export class DataService {
 
   getCatalogElements(): Observable<ICatalogElement[]> {
     return this.http.get<ICatalogElement[]>(`${env.backEnd.address}/catalog/elements`);
+  }
+
+  getCatalogElementPages(): Observable<ICatalogElementsPages[]> {
+    return this.http.get<ICatalogElementsPages[]>(`${env.backEnd.address}/catalog/page`);
   }
 
   getGallerySubMenu(): Observable<ICatalogTypes[]> {

@@ -9,6 +9,7 @@ import { SeasonComponent } from './components/season/season.component';
 import { IdeaComponent } from './components/idea/idea.component';
 import { CallbackComponent } from './components/callback/callback.component';
 import { HelloPageComponent } from './components/hello-page/hello-page.component';
+import { CatalogElementPageComponent } from './components/catalog-element-page/catalog-element-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: '', component: HelloPageComponent },
       { path: 'catalog', component: CatalogComponent},
       { path: 'catalog/:type', component: CatalogComponent},
+      { path: 'catalog/elementpage/:page', component: CatalogElementPageComponent },
       { path: 'galery', component: GaleryComponent },
       { path: 'galery/:type', component: GaleryComponent },
       { path: 'season', component: SeasonComponent },

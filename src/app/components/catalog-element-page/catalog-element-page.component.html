@@ -1,1 +1,14 @@
-<p>catalog-element-page works!</p>
+<div class="container" *ngIf="page">
+    <div class="column">
+        <div class="header"> <p>{{page.headText}}</p></div>
+        <img src="{{getImgLink()}}" alt="">
+    </div>
+    <div class="column">
+        <p>{{page.paragraphText}}</p>
+        <p>{{page.text}}</p>
+        <app-dynamic-table
+            [spreadSheetId]="page.spreadsheetId"
+            [spreadSheetList]="page.spreadSheetPageNum"
+        ></app-dynamic-table>
+    </div>
+</div>
