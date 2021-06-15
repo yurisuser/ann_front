@@ -1,5 +1,5 @@
+import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -11,6 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +19,6 @@ import { AuthComponent } from './components/auth/auth.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
-import { LeftMenuComponent } from './components/left-menu/left-menu.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { GaleryComponent } from './components/galery/galery.component';
 import { SeasonComponent } from './components/season/season.component';
@@ -30,6 +30,7 @@ import { HeaderInterceptor } from './interceptors/header-interceptor';
 import { HelloPageComponent } from './components/hello-page/hello-page.component';
 import { DynamicTableComponent } from './components/dynamicTable/dynamicTable.component';
 import { CatalogElementPageComponent } from './components/catalog-element-page/catalog-element-page.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,6 @@ import { CatalogElementPageComponent } from './components/catalog-element-page/c
     HeaderComponent,
     FooterComponent,
     MainComponent,
-    LeftMenuComponent,
     CatalogComponent,
     GaleryComponent,
     SeasonComponent,
@@ -47,6 +47,7 @@ import { CatalogElementPageComponent } from './components/catalog-element-page/c
     HelloPageComponent,
     DynamicTableComponent,
     CatalogElementPageComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,8 @@ import { CatalogElementPageComponent } from './components/catalog-element-page/c
     MatButtonModule,
     MatSidenavModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatExpansionModule
   ],
   providers: [
     AuthService,

@@ -4,6 +4,7 @@
     justify-content: space-around;
     width: 100%;
     height: fit-content;
+    padding-top: 30px;
 }
 
 .card {
@@ -17,7 +18,7 @@
     align-items: center;
     cursor: pointer;
     margin: 10px;
-    background-color: #4FD0FC;
+    background-color: rgb(69, 175, 211);
 
     img {
         height: auto;

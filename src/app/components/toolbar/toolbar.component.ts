@@ -1,26 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { DataService } from 'src/app/services/data.service';
 import { map } from 'rxjs/operators';
+import { MatSidenav, MatAccordion } from '@angular/material';
+
+import { DataService } from '../../services/data.service';
 
 @Component({
-  selector: 'app-left-menu',
-  templateUrl: './left-menu.component.html',
-  styleUrls: ['./left-menu.component.scss']
+  selector: 'app-toolbar',
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.scss']
 })
-export class LeftMenuComponent implements OnInit {
+export class ToolbarComponent implements OnInit {
+  @ViewChild('sidenav', {static: true}) sidenav: MatSidenav;
+  @ViewChild('accordion', {static: true}) accordion: MatAccordion;
+
   public readonly mainMenu = [
-    { name: 'Каталог продукции', param: '/main/catalog', sub: 'catalog' },
-    { name: 'Галерея макетов', param: '/main/galery', sub: 'galery' },
-    { name: 'Сезонные товары', param: '/main/season' },
-    { name: 'Оригинальные изделия', param: '/main/idea' },
-    { name: 'Отзывы / предложения', param: '/main/callback' },
+    { name: 'Каталог', param: '/main/catalog', sub: 'catalog' },
+    { name: 'Галерея', param: '/main/galery', sub: 'galery' },
+    { name: 'Сезонные', param: '/main/season'},
+    { name: 'Эксклюзив', param: '/main/idea'},
+    { name: 'Отзывы', param: '/main/callback'},
   ];
+
   public currentRoute;
   public catalogSubMenu;
   public galerySubMenu;
-  public isShowMenu = false;
+  opened = false;
 
   constructor(
     private router: Router,
@@ -45,5 +50,9 @@ export class LeftMenuComponent implements OnInit {
 
   isActiveRoute(params: any[]): boolean {
     return this.router.isActive(this.router.createUrlTree(params), false);
+  }
+
+  close() {
+    this.sidenav.close();
   }
 }
