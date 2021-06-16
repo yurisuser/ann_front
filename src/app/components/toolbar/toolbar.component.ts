@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { MatSidenav, MatAccordion } from '@angular/material';
 
 import { DataService } from '../../services/data.service';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-toolbar',

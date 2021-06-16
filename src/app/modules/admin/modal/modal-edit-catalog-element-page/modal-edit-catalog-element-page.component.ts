@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { ImageService } from '../../services/image.service';
 import { TableService } from '../../services/table.service';

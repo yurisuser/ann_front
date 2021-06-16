@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import { ICatalogElementsPages } from '../../../../models/catalogElementsPages';
 import { TableService } from '../../services/table.service';

@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-    private loginForm;
+    loginForm;
     public isDisabledButton = false;
     public errMessage = '';
 
