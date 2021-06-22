@@ -1,13 +1,8 @@
 <div *ngIf="catalogElementsArr" class="container">
-    <div *ngFor="let item of catalogElementsArr">
-        <div class="card" routerLink="/main/catalog/elementpage/{{item.id}}">
+    <div *ngFor="let item of catalogElementsArr" class="card" routerLink="/main/catalog/elementpage/{{item.id}}">
             <img [src]="getFullImgPath(item.img)" alt="">
             <div class="down">
-                <div class="name">
-                    {{ item.viewName }}
-                </div>
-                <div class="arrow"></div>
+                <div class="name"> {{ item.viewName }} </div>
             </div>
-        </div>
     </div>
 </div>
