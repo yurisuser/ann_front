@@ -30,7 +30,6 @@ import { HeaderInterceptor } from './interceptors/header-interceptor';
 import { HelloPageComponent } from './components/hello-page/hello-page.component';
 import { DynamicTableComponent } from './components/dynamicTable/dynamicTable.component';
 import { CatalogElementPageComponent } from './components/catalog-element-page/catalog-element-page.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +46,6 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     HelloPageComponent,
     DynamicTableComponent,
     CatalogElementPageComponent,
-    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
