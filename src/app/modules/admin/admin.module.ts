@@ -7,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
@@ -31,6 +32,7 @@ import { ModalEditGaleryTypesComponent } from './modal/modal-edit-galery-types/m
 import { ModalEditGaleryElementsComponent } from './modal/modal-edit-galery-elements/modal-edit-galery-elements.component';
 import { CatalogPageEditorComponent } from './components/catalog-page-editor/catalog-page-editor.component';
 import { ModalEditCatalogElementPageComponent } from './modal/modal-edit-catalog-element-page/modal-edit-catalog-element-page.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { ModalEditCatalogElementPageComponent } from './modal/modal-edit-catalog
     ModalEditGaleryElementsComponent,
     CatalogPageEditorComponent,
     ModalEditCatalogElementPageComponent,
+    FilterComponent,
   ],
   imports: [
     CommonModule,
@@ -67,6 +70,9 @@ import { ModalEditCatalogElementPageComponent } from './modal/modal-edit-catalog
     MatButtonModule,
     MatCheckboxModule,
     MatTableModule,
+    MatExpansionModule,
+    
+    
   ],
   entryComponents: [
     ModalNewUserComponent,

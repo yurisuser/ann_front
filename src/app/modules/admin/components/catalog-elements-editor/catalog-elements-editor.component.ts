@@ -18,10 +18,13 @@ import { of } from 'rxjs';
 export class CatalogElementsEditorComponent implements OnInit {
 
     public dataSource: ICatalogElement[];
+    public filteredData: ICatalogElement[];
     public displayedColumns = ['id', 'viewName', 'img', 'catalogType', 'order', 'check'];
+    public filterColumn = ['viewName', 'catalogType'];
+    public codedFields = ['catalogType'];
     public markedElement = [];
+    public catalogTypes: ICatalogTypes[];
     private dialogRefEdit;
-    catalogTypes: ICatalogTypes[];
 
     constructor(
         private tableSrv: TableService,
@@ -39,6 +42,7 @@ export class CatalogElementsEditorComponent implements OnInit {
         this.tableSrv.getCatalogElements()
             .subscribe(x => {
                 this.dataSource = x;
+                this.filteredData = x;
             });
     }
 
@@ -54,7 +58,6 @@ export class CatalogElementsEditorComponent implements OnInit {
     }
 
     onEdit() {
-        // tslint:disable-next-line: no-unused-expression
         !this.dialogRefEdit || this.dialogRefEdit.close();
         this.dialogRefEdit =  this.dialog.open(ModalEditCatalogElementComponent, {
             data: {
@@ -73,7 +76,6 @@ export class CatalogElementsEditorComponent implements OnInit {
     }
 
     onCreate() {
-        // tslint:disable-next-line: no-unused-expression
         !this.dialogRefEdit || this.dialogRefEdit.close();
         this.dialogRefEdit =  this.dialog.open(ModalEditCatalogElementComponent, {
             data: {
@@ -124,5 +126,14 @@ export class CatalogElementsEditorComponent implements OnInit {
 
     getFullPath(fileName: string): string {
         return this.imgSrv.getFullThumbPath(fileName);
+    }
+
+    getFilteredData(event: Array<any>) {
+        if(!event.length) {
+            this.filteredData = this.dataSource;
+            return;
+        }
+        this.filteredData = event;
+
     }
 }

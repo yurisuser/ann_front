@@ -2,8 +2,12 @@
     <div class="content" *ngIf="catalogTypes">
         Submenu elements edit
         <br>
-        <br>
-        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <app-filter 
+            [sourceData]="dataSource" 
+            [fields]="filterColumn"
+            (filterEmiter)="getFilteredData($event)">
+        </app-filter>
+        <mat-table [dataSource]="filteredData" class="mat-elevation-z8">
 
                 <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
@@ -24,7 +28,7 @@
 
                 <ng-container matColumnDef="catalogType">
                     <mat-header-cell *matHeaderCellDef> catalogType </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{getCatalogViewName(element.catalogType)}} </mat-cell>
+                    <mat-cell *matCellDef="let element">[{{element.catalogType}}] {{getCatalogViewName(element.catalogType)}} </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="order">

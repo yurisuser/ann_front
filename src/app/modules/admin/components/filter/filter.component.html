@@ -1,0 +1,18 @@
+<div class="container" *ngIf="sourceData && fields">
+    <mat-accordion #accordion="matAccordion">
+        <mat-expansion-panel hideToggle>
+            <!-- https://stackoverflow.com/questions/49747188/material-angular-accordion-header-title-height -->
+            <mat-expansion-panel-header [collapsedHeight]="'1.5em'">
+              <mat-panel-title>
+                  <span>Filter </span>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngFor="let item of fields">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>{{ item }}</mat-label>
+                    <input id={{item}} matInput (keyup)="setFilter($event)">
+                </mat-form-field>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
