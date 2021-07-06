@@ -1,9 +1,12 @@
 <div class="container">
     <div class="content" *ngIf="galeryTypes">
         Submenu elements edit
-        <br>
-        <br>
-        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <app-filter 
+            [sourceData]="dataSource" 
+            [fields]="filterColumn"
+            (filterEmiter)="getFilteredData($event)">
+        </app-filter>
+        <mat-table [dataSource]="filteredData" class="mat-elevation-z8">
 
                 <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
@@ -24,7 +27,7 @@
 
                 <ng-container matColumnDef="galeryType">
                     <mat-header-cell *matHeaderCellDef> galeryType </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{getGaleryViewName(element.galeryType)}} </mat-cell>
+                    <mat-cell *matCellDef="let element">[{{element.galeryType}}] {{getGaleryViewName(element.galeryType)}} </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="order">

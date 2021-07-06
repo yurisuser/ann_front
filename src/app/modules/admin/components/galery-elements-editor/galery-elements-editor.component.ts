@@ -19,7 +19,9 @@ export class GaleryElementsEditorComponent implements OnInit {
 
   public dataSource: IGaleryElement[];
   public displayedColumns = ['id', 'viewName', 'img', 'galeryType', 'order', 'check'];
+  public filterColumn = ['viewName', 'galeryType'];
   public markedElement = [];
+  public filteredData;
   private dialogRefEdit;
   galeryTypes: IGaleryTypes[];
 
@@ -39,6 +41,7 @@ export class GaleryElementsEditorComponent implements OnInit {
       this.tableSrv.getGaleryElements()
           .subscribe(x => {
               this.dataSource = x;
+              this.filteredData = x;
           });
   }
 
@@ -54,7 +57,6 @@ export class GaleryElementsEditorComponent implements OnInit {
   }
 
   onEdit() {
-      // tslint:disable-next-line: no-unused-expression
       !this.dialogRefEdit || this.dialogRefEdit.close();
       this.dialogRefEdit =  this.dialog.open(ModalEditGaleryElementsComponent, {
           data: {
@@ -73,7 +75,6 @@ export class GaleryElementsEditorComponent implements OnInit {
   }
 
   onCreate() {
-      // tslint:disable-next-line: no-unused-expression
       !this.dialogRefEdit || this.dialogRefEdit.close();
       this.dialogRefEdit =  this.dialog.open(ModalEditGaleryElementsComponent, {
           data: {
@@ -125,4 +126,12 @@ export class GaleryElementsEditorComponent implements OnInit {
   getFullPath(fileName: string): string {
       return this.imgSrv.getFullThumbPath(fileName);
   }
+
+  getFilteredData(event: Array<any>) {
+    if(!event.length) {
+        this.filteredData = this.dataSource;
+        return;
+    }
+    this.filteredData = event;
+}
 }
